@@ -6,5 +6,6 @@ target 'PictureCool' do
   use_frameworks!
 
   # Pods for PictureCool
-    pod 'SnapKit'
+    pod 'SnapKit' 
+    pod 'Alamofire'
 end
