@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		30031F9222C8397200955F27 /* PhotoBookChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30031F9122C8397200955F27 /* PhotoBookChooseView.swift */; };
-		30031F9422C8421200955F27 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30031F9322C8421200955F27 /* AnimationView.swift */; };
 		30031F9622C842A700955F27 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30031F9522C842A700955F27 /* ColorHelper.swift */; };
-		30031F9822C8968700955F27 /* FakeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30031F9722C8968700955F27 /* FakeNavigationView.swift */; };
-		30031F9A22C89A7B00955F27 /* FakeNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30031F9922C89A7B00955F27 /* FakeNavigationView.xib */; };
 		30A9F6A422C8ABA5007F5692 /* ZImageMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6A322C8ABA5007F5692 /* ZImageMaker.swift */; };
 		30A9F6A622C98E72007F5692 /* AnimationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6A522C98E72007F5692 /* AnimationTool.swift */; };
-		30A9F6AF22C9E562007F5692 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6AE22C9E562007F5692 /* ViewController.swift */; };
 		30A9F6B022C9E579007F5692 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776022C8685800D4C635 /* AppDelegate.swift */; };
+		30A9F6B422C9EFB6007F5692 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6B322C9EFB6007F5692 /* AnimationView.swift */; };
+		30A9F6B622C9EFBF007F5692 /* FakeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6B522C9EFBF007F5692 /* FakeNavigationView.swift */; };
+		30A9F6B822C9EFC8007F5692 /* FakeNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A9F6B722C9EFC7007F5692 /* FakeNavigationView.xib */; };
+		30A9F6BA22C9EFD0007F5692 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6B922C9EFD0007F5692 /* ViewController.swift */; };
 		367A9424C351D39E305B7DFA /* Pods_PictureCool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */; };
 		B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD022C7444500D4C635 /* Main.storyboard */; };
 		B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD322C7444700D4C635 /* Assets.xcassets */; };
@@ -29,13 +29,13 @@
 /* Begin PBXFileReference section */
 		004BB5729D6542399E9AB3ED /* Pods-PictureCool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureCool.release.xcconfig"; path = "Target Support Files/Pods-PictureCool/Pods-PictureCool.release.xcconfig"; sourceTree = "<group>"; };
 		30031F9122C8397200955F27 /* PhotoBookChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBookChooseView.swift; sourceTree = "<group>"; };
-		30031F9322C8421200955F27 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		30031F9522C842A700955F27 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
-		30031F9722C8968700955F27 /* FakeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNavigationView.swift; sourceTree = "<group>"; };
-		30031F9922C89A7B00955F27 /* FakeNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FakeNavigationView.xib; sourceTree = "<group>"; };
 		30A9F6A322C8ABA5007F5692 /* ZImageMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZImageMaker.swift; sourceTree = "<group>"; };
 		30A9F6A522C98E72007F5692 /* AnimationTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTool.swift; sourceTree = "<group>"; };
-		30A9F6AE22C9E562007F5692 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		30A9F6B322C9EFB6007F5692 /* AnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationView.swift; path = PictureCool/MainView/AnimationView.swift; sourceTree = "<group>"; };
+		30A9F6B522C9EFBF007F5692 /* FakeNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeNavigationView.swift; path = PictureCool/MainView/FakeNavigationView.swift; sourceTree = "<group>"; };
+		30A9F6B722C9EFC7007F5692 /* FakeNavigationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FakeNavigationView.xib; path = PictureCool/MainView/FakeNavigationView.xib; sourceTree = "<group>"; };
+		30A9F6B922C9EFD0007F5692 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = PictureCool/MainView/ViewController.swift; sourceTree = "<group>"; };
 		AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureCool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55A6AC922C7444500D4C635 /* PictureCool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureCool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55A6AD122C7444500D4C635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,10 +77,10 @@
 		30A9F6B222C9E639007F5692 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				30031F9322C8421200955F27 /* AnimationView.swift */,
-				30031F9722C8968700955F27 /* FakeNavigationView.swift */,
-				30031F9922C89A7B00955F27 /* FakeNavigationView.xib */,
-				30A9F6AE22C9E562007F5692 /* ViewController.swift */,
+				30A9F6B922C9EFD0007F5692 /* ViewController.swift */,
+				30A9F6B522C9EFBF007F5692 /* FakeNavigationView.swift */,
+				30A9F6B322C9EFB6007F5692 /* AnimationView.swift */,
+				30A9F6B722C9EFC7007F5692 /* FakeNavigationView.xib */,
 			);
 			name = MainView;
 			path = ..;
@@ -221,7 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */,
-				30031F9A22C89A7B00955F27 /* FakeNavigationView.xib in Resources */,
+				30A9F6B822C9EFC8007F5692 /* FakeNavigationView.xib in Resources */,
 				B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,17 +283,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				30A9F6B022C9E579007F5692 /* AppDelegate.swift in Sources */,
+				30A9F6B622C9EFBF007F5692 /* FakeNavigationView.swift in Sources */,
 				30A9F6A622C98E72007F5692 /* AnimationTool.swift in Sources */,
 				30A9F6A422C8ABA5007F5692 /* ZImageMaker.swift in Sources */,
 				30031F9622C842A700955F27 /* ColorHelper.swift in Sources */,
-				30031F9822C8968700955F27 /* FakeNavigationView.swift in Sources */,
-				30031F9422C8421200955F27 /* AnimationView.swift in Sources */,
 				30031F9222C8397200955F27 /* PhotoBookChooseView.swift in Sources */,
-				30A9F6AF22C9E562007F5692 /* ViewController.swift in Sources */,
 				B55A776422C8909F00D4C635 /* SaveCore.swift in Sources */,
 				B55A776622C898CD00D4C635 /* HMAC-SHA1.swift in Sources */,
 				B55A776C22C89E1800D4C635 /* GetInformation.swift in Sources */,
+				30A9F6B422C9EFB6007F5692 /* AnimationView.swift in Sources */,
 				B55A776E22C9907600D4C635 /* linesBase.swift in Sources */,
+				30A9F6BA22C9EFD0007F5692 /* ViewController.swift in Sources */,
 				B55A6ADF22C7446900D4C635 /* PictureCore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
