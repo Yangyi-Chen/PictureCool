@@ -14,20 +14,16 @@
 		30031F9A22C89A7B00955F27 /* FakeNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30031F9922C89A7B00955F27 /* FakeNavigationView.xib */; };
 		30A9F6A422C8ABA5007F5692 /* ZImageMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6A322C8ABA5007F5692 /* ZImageMaker.swift */; };
 		30A9F6A622C98E72007F5692 /* AnimationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6A522C98E72007F5692 /* AnimationTool.swift */; };
+		30A9F6AF22C9E562007F5692 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6AE22C9E562007F5692 /* ViewController.swift */; };
+		30A9F6B022C9E579007F5692 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776022C8685800D4C635 /* AppDelegate.swift */; };
 		367A9424C351D39E305B7DFA /* Pods_PictureCool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */; };
 		B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD022C7444500D4C635 /* Main.storyboard */; };
 		B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD322C7444700D4C635 /* Assets.xcassets */; };
-
-		B55A6AD722C7444700D4C635 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD522C7444700D4C635 /* LaunchScreen.storyboard */; };
-
 		B55A6ADF22C7446900D4C635 /* PictureCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6ADE22C7446800D4C635 /* PictureCore.swift */; };
-    
-		B55A776222C8685800D4C635 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776022C8685800D4C635 /* AppDelegate.swift */; };
 		B55A776422C8909F00D4C635 /* SaveCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776322C8909F00D4C635 /* SaveCore.swift */; };
 		B55A776622C898CD00D4C635 /* HMAC-SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776522C898CD00D4C635 /* HMAC-SHA1.swift */; };
 		B55A776C22C89E1800D4C635 /* GetInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776B22C89E1800D4C635 /* GetInformation.swift */; };
 		B55A776E22C9907600D4C635 /* linesBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776D22C9907600D4C635 /* linesBase.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,12 +35,12 @@
 		30031F9922C89A7B00955F27 /* FakeNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FakeNavigationView.xib; sourceTree = "<group>"; };
 		30A9F6A322C8ABA5007F5692 /* ZImageMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZImageMaker.swift; sourceTree = "<group>"; };
 		30A9F6A522C98E72007F5692 /* AnimationTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTool.swift; sourceTree = "<group>"; };
+		30A9F6AE22C9E562007F5692 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureCool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55A6AC922C7444500D4C635 /* PictureCool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureCool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55A6AD122C7444500D4C635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B55A6AD322C7444700D4C635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B55A6AD822C7444700D4C635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-
 		B55A6ADE22C7446800D4C635 /* PictureCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCore.swift; sourceTree = "<group>"; };
 		B55A775F22C8685800D4C635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B55A776022C8685800D4C635 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +49,6 @@
 		B55A776722C89C8000D4C635 /* PictureCool-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PictureCool-Bridging-Header.h"; sourceTree = "<group>"; };
 		B55A776B22C89E1800D4C635 /* GetInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInformation.swift; sourceTree = "<group>"; };
 		B55A776D22C9907600D4C635 /* linesBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = linesBase.swift; sourceTree = "<group>"; };
-
 		B846CE74F2BC6FFFFBFC73A1 /* Pods-PictureCool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureCool.debug.xcconfig"; path = "Target Support Files/Pods-PictureCool/Pods-PictureCool.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +64,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30A9F6B122C9E616007F5692 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				30A9F6A522C98E72007F5692 /* AnimationTool.swift */,
+				30A9F6A322C8ABA5007F5692 /* ZImageMaker.swift */,
+				30031F9522C842A700955F27 /* ColorHelper.swift */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		30A9F6B222C9E639007F5692 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				30031F9322C8421200955F27 /* AnimationView.swift */,
+				30031F9722C8968700955F27 /* FakeNavigationView.swift */,
+				30031F9922C89A7B00955F27 /* FakeNavigationView.xib */,
+				30A9F6AE22C9E562007F5692 /* ViewController.swift */,
+			);
+			name = MainView;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		57026D9D432B395C32C6782B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,22 +116,14 @@
 		B55A6ACB22C7444500D4C635 /* PictureCool */ = {
 			isa = PBXGroup;
 			children = (
-				B55A6ACC22C7444500D4C635 /* AppDelegate.swift */,
-				30A9F6A522C98E72007F5692 /* AnimationTool.swift */,
-				B55A6ACE22C7444500D4C635 /* ViewController.swift */,
+				30A9F6B122C9E616007F5692 /* Tool */,
 				30031F9122C8397200955F27 /* PhotoBookChooseView.swift */,
-				30031F9322C8421200955F27 /* AnimationView.swift */,
-				30A9F6A322C8ABA5007F5692 /* ZImageMaker.swift */,
-				30031F9722C8968700955F27 /* FakeNavigationView.swift */,
-				30031F9922C89A7B00955F27 /* FakeNavigationView.xib */,
+				30A9F6B222C9E639007F5692 /* MainView */,
 				B55A6AD022C7444500D4C635 /* Main.storyboard */,
 				B55A6AD322C7444700D4C635 /* Assets.xcassets */,
-				B55A6AD522C7444700D4C635 /* LaunchScreen.storyboard */,
 				B55A6AD822C7444700D4C635 /* Info.plist */,
-				30031F9522C842A700955F27 /* ColorHelper.swift */,
 				B55A775D22C8685800D4C635 /* SupportingFIles */,
 				B55A6AFF22C84D6100D4C635 /* CoreModel */,
-
 			);
 			path = PictureCool;
 			sourceTree = "<group>";
@@ -211,7 +220,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B55A776122C8685800D4C635 /* LaunchScreen.storyboard in Resources */,
 				B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */,
 				30031F9A22C89A7B00955F27 /* FakeNavigationView.xib in Resources */,
 				B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */,
@@ -274,14 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A9F6B022C9E579007F5692 /* AppDelegate.swift in Sources */,
 				30A9F6A622C98E72007F5692 /* AnimationTool.swift in Sources */,
-				B55A6ACF22C7444500D4C635 /* ViewController.swift in Sources */,
 				30A9F6A422C8ABA5007F5692 /* ZImageMaker.swift in Sources */,
 				30031F9622C842A700955F27 /* ColorHelper.swift in Sources */,
 				30031F9822C8968700955F27 /* FakeNavigationView.swift in Sources */,
 				30031F9422C8421200955F27 /* AnimationView.swift in Sources */,
 				30031F9222C8397200955F27 /* PhotoBookChooseView.swift in Sources */,
-				B55A6ACD22C7444500D4C635 /* AppDelegate.swift in Sources */,
+				30A9F6AF22C9E562007F5692 /* ViewController.swift in Sources */,
 				B55A776422C8909F00D4C635 /* SaveCore.swift in Sources */,
 				B55A776622C898CD00D4C635 /* HMAC-SHA1.swift in Sources */,
 				B55A776C22C89E1800D4C635 /* GetInformation.swift in Sources */,
