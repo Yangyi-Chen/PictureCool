@@ -11,20 +11,56 @@ import UIKit
 class PictureProcessCore{
     var image:UIImage?
     var saveProcessor:saveCore?
+    var tag:String?
     
+    var theTotalNumberofPicture:Int?
     
+    let linesbase:lineBase?
     
     //存图片
-    func savePicture(image:UIImage, name:String){
-        saveProcessor!.save(image: image, name: name)
+    func savePicture(image:UIImage){
+        saveProcessor!.save(image: image, nameNumber: String(theTotalNumberofPicture!))
+        theTotalNumberofPicture = theTotalNumberofPicture! + 1
     }
     
     //提取图片
-    func getPicture(name:String)-> UIImage{
-        return saveProcessor!.getPicture(name: name)
+    func getPicture(nameNumber:String)-> UIImage{
+        return saveProcessor!.getPicture(nameNumber: nameNumber)
     }
     
-    //获取图片中的主要元素
+    //提取所有图片
+    func getAllPicture()->Array<UIImage>{
+        var array = Array<UIImage>()
+        var i = 0
+        while(i<theTotalNumberofPicture!){
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(String(i))
+            let data = try! Data(contentsOf: fileURL)
+            let image = UIImage(data: data)
+            array.append(image!)
+            i = i+1
+        }
+        return array
+    }
+    
+    //删除指定编号的的图片
+    func deletePicture(nameNumber:String){
+        var oldNameNumber = (Int(nameNumber))!
+        var i = (Int(nameNumber))!+1
+        while(i<theTotalNumberofPicture!){
+            let oldURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(String(oldNameNumber))
+            let newURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(String(i))
+            try! FileManager.default.removeItem(at: oldURL)
+            let data = try! Data(contentsOf: newURL)
+            try! data.write(to: oldURL)
+            oldNameNumber = i
+            i = i+1
+        }
+        theTotalNumberofPicture = theTotalNumberofPicture! - 1
+    }
+    
+    
+    
+    //获取图片中的主要元素，  Main！！ set the tag in linebase here
     func getTheMainElement(){
         
     }
@@ -34,13 +70,28 @@ class PictureProcessCore{
         
     }
     
-    //获取诗词数组   "motto" 或 "scene"
-    func getTheLines(_ type: String)->Array<String>{
-        return returnLines(type)
+    //获取诗词数组
+    func getTheLines()->Array<String>{
+        return linesbase!.getlines()
     }
     
+    //程序结束前一定要调用， 保存模型中的数据！！！
+    func saveModel(){
+        let fileurl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("totalNumber")
+        let data = String(theTotalNumberofPicture!).data(using: .utf8)
+        try! data!.write(to: fileurl)
+    }
     
-    
+    private func gettheNumber(){
+        let fileurl = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("totalNumber")
+        if fileurl != nil{
+        let data = try! Data(contentsOf: fileurl!)
+        let str = String(data: data, encoding: .utf8)
+        self.theTotalNumberofPicture = Int(str!)
+        }else{
+            self.theTotalNumberofPicture = 0
+        }
+    }
     
     
     
@@ -50,25 +101,16 @@ class PictureProcessCore{
     init(_ image: UIImage){
         self.image = image
         saveProcessor = saveCore()
+        linesbase = lineBase()
+        gettheNumber()
     }
     
     
     
     
-    let sceneLines: Array<String> = ["绿树阴浓夏日长，楼台倒影入池塘。","碧玉妆成一树高，万条垂下绿丝绦","水晶帘动微风起，满架蔷薇一院香","几处早莺争暖树，谁家新燕啄春泥"]
-    let mottoLines = ["一个人有生就有死，但只要你活着，就要以最好的方式活下去。","当我们失去的时候，才知道自己曾经拥有。","眼泪的存在，是为了证明悲伤不是一场幻觉。"]
+   
     
     
     
-    private func returnLines(_ type: String) -> Array<String>{
-        switch type{
-        case "motto":
-            return mottoLines
-        case "scene":
-            return sceneLines
-        default:
-            return []
-        }
-    }
 }
 

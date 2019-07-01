@@ -35,6 +35,9 @@ class InformationCore{
         ]
         return header
     }
+    
+    
+    
     func constructParameter()-> Dictionary<String, String>{
         var dic = Dictionary<String, String>()
         dic = [

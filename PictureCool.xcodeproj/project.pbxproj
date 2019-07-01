@@ -16,6 +16,7 @@
 		B55A776422C8909F00D4C635 /* SaveCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776322C8909F00D4C635 /* SaveCore.swift */; };
 		B55A776622C898CD00D4C635 /* HMAC-SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776522C898CD00D4C635 /* HMAC-SHA1.swift */; };
 		B55A776C22C89E1800D4C635 /* GetInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776B22C89E1800D4C635 /* GetInformation.swift */; };
+		B55A776E22C9907600D4C635 /* linesBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A776D22C9907600D4C635 /* linesBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B55A776522C898CD00D4C635 /* HMAC-SHA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HMAC-SHA1.swift"; sourceTree = "<group>"; };
 		B55A776722C89C8000D4C635 /* PictureCool-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PictureCool-Bridging-Header.h"; sourceTree = "<group>"; };
 		B55A776B22C89E1800D4C635 /* GetInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInformation.swift; sourceTree = "<group>"; };
+		B55A776D22C9907600D4C635 /* linesBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = linesBase.swift; sourceTree = "<group>"; };
 		B846CE74F2BC6FFFFBFC73A1 /* Pods-PictureCool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureCool.debug.xcconfig"; path = "Target Support Files/Pods-PictureCool/Pods-PictureCool.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				B55A6ADE22C7446800D4C635 /* PictureCore.swift */,
+				B55A776D22C9907600D4C635 /* linesBase.swift */,
 				B55A776522C898CD00D4C635 /* HMAC-SHA1.swift */,
 				B55A776B22C89E1800D4C635 /* GetInformation.swift */,
 				B55A776322C8909F00D4C635 /* SaveCore.swift */,
@@ -243,6 +246,7 @@
 				B55A776622C898CD00D4C635 /* HMAC-SHA1.swift in Sources */,
 				B55A776C22C89E1800D4C635 /* GetInformation.swift in Sources */,
 				B55A776222C8685800D4C635 /* AppDelegate.swift in Sources */,
+				B55A776E22C9907600D4C635 /* linesBase.swift in Sources */,
 				B55A6ADF22C7446900D4C635 /* PictureCore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
