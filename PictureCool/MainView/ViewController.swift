@@ -9,10 +9,12 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController,CAAnimationDelegate {
+class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     var animationView:AnimationView!
     var tapGes:UITapGestureRecognizer!
+    var tableView:MainTableView!
+    
     lazy var camera = { () -> UIButton in
         let temp = UIButton()
         temp.setImage(ZImageMaker.bigCameraImage(), for: .normal)
@@ -37,12 +39,13 @@ class ViewController: UIViewController,CAAnimationDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         self.animationView.addPushBehavior()
-        
+        self.tableView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         addAnimationView()
-        addTitleBar()
+        //addTitleBar()
+        addTableView()
         setAddButton()
         addTapGes()
         // Do any additional setup after loading the view.
@@ -88,7 +91,7 @@ class ViewController: UIViewController,CAAnimationDelegate {
     private func addTapGes(){
         tapGes = UITapGestureRecognizer()
         tapGes.addTarget(self, action: #selector(tapGesTarget(sender:)))
-        self.animationView.addGestureRecognizer(tapGes)
+        self.tableView.addGestureRecognizer(tapGes)
     }
     
     @objc func tapGesTarget(sender:UITapGestureRecognizer){
@@ -154,13 +157,49 @@ class ViewController: UIViewController,CAAnimationDelegate {
     }
     
     @objc func cameraBtnTarget(btn:UIButton){
-        
+        var imagePicker = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            if imagePicker == nil{
+                imagePicker = UIImagePickerController()
+            }
+            imagePicker.delegate = self
+            //设置图片来源为相机
+            //imagePicker.allowsEditing = true
+            imagePicker.sourceType = .camera
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else{
+            //弹出警告框
+            let errorAlert = UIAlertController(title: "相机不可用", message: "", preferredStyle: UIAlertController.Style.alert)
+            let cancelAction = UIAlertAction(title: "确定", style: UIAlertAction.Style.cancel, handler: nil)
+            errorAlert.addAction(cancelAction)
+            self.present(errorAlert, animated: true, completion: nil)
+        }
     }
     
     @objc func photoBookBtnTarget(btn:UIButton){
-        
+        let picker = UIImagePickerController()
+        picker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        //picker.allowsEditing = true
+       // picker.sourceType = sourceType
+        self.present(picker, animated: true, completion: nil)
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("get picture")
+        self.dismiss(animated: true, completion: nil)
+        
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let vc = PictureEditController()
+        vc.nowImage = image
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func addTableView(){
+        tableView = MainTableView(frame: self.view.frame, style: .grouped)
+        tableView.backgroundColor = nil
+        self.view.addSubview(tableView)
+    }
 //    private func setCameraPhotoBtn(){
 //        let camera = UIButton()
 //        let photoBook = UIButton()

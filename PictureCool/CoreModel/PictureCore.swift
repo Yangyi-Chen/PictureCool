@@ -84,7 +84,7 @@ class PictureProcessCore{
     
     private func gettheNumber(){
         let fileurl = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("totalNumber")
-        if fileurl != nil{
+        if FileManager.default.fileExists(atPath: fileurl!.path){
         let data = try! Data(contentsOf: fileurl!)
         let str = String(data: data, encoding: .utf8)
         self.theTotalNumberofPicture = Int(str!)
@@ -98,8 +98,8 @@ class PictureProcessCore{
     
     
     
-    init(_ image: UIImage){
-        self.image = image
+    init(){
+        
         saveProcessor = saveCore()
         linesbase = lineBase()
         gettheNumber()
