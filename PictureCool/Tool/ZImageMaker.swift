@@ -32,6 +32,11 @@ class ZImageMaker {
         add = add?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         return add!
     }
+    static func makeRefreshImage()->UIImage{
+        var add = UIImage(named: "refresh")?.reSizeImage(reSize: CGSize(width: 60, height: 60))
+        add = add?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        return add!
+    }
     static func bigCameraImage()->UIImage{
         var add = UIImage(named: "camera-1")?.reSizeImage(reSize: CGSize(width: 70, height: 70))
         add = add?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)

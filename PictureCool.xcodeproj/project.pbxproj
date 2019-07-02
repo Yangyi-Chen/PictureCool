@@ -16,6 +16,9 @@
 		30A9F6B622C9EFBF007F5692 /* FakeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6B522C9EFBF007F5692 /* FakeNavigationView.swift */; };
 		30A9F6B822C9EFC8007F5692 /* FakeNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A9F6B722C9EFC7007F5692 /* FakeNavigationView.xib */; };
 		30A9F6BA22C9EFD0007F5692 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6B922C9EFD0007F5692 /* ViewController.swift */; };
+		30A9F6BD22C9FB0C007F5692 /* PictureEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6BC22C9FB0C007F5692 /* PictureEditController.swift */; };
+		30A9F6BF22CB0630007F5692 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6BE22CB0630007F5692 /* MainTableView.swift */; };
+		30A9F6C122CB064E007F5692 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6C022CB064E007F5692 /* MainTableViewCell.swift */; };
 		367A9424C351D39E305B7DFA /* Pods_PictureCool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */; };
 		B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD022C7444500D4C635 /* Main.storyboard */; };
 		B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD322C7444700D4C635 /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 		30A9F6B522C9EFBF007F5692 /* FakeNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeNavigationView.swift; path = PictureCool/MainView/FakeNavigationView.swift; sourceTree = "<group>"; };
 		30A9F6B722C9EFC7007F5692 /* FakeNavigationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FakeNavigationView.xib; path = PictureCool/MainView/FakeNavigationView.xib; sourceTree = "<group>"; };
 		30A9F6B922C9EFD0007F5692 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = PictureCool/MainView/ViewController.swift; sourceTree = "<group>"; };
+		30A9F6BC22C9FB0C007F5692 /* PictureEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditController.swift; sourceTree = "<group>"; };
+		30A9F6BE22CB0630007F5692 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
+		30A9F6C022CB064E007F5692 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureCool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55A6AC922C7444500D4C635 /* PictureCool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureCool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55A6AD122C7444500D4C635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,9 +89,19 @@
 				30A9F6B522C9EFBF007F5692 /* FakeNavigationView.swift */,
 				30A9F6B322C9EFB6007F5692 /* AnimationView.swift */,
 				30A9F6B722C9EFC7007F5692 /* FakeNavigationView.xib */,
+				30A9F6BE22CB0630007F5692 /* MainTableView.swift */,
+				30A9F6C022CB064E007F5692 /* MainTableViewCell.swift */,
 			);
 			name = MainView;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		30A9F6BB22C9FAF1007F5692 /* PictureEditController */ = {
+			isa = PBXGroup;
+			children = (
+				30A9F6BC22C9FB0C007F5692 /* PictureEditController.swift */,
+			);
+			path = PictureEditController;
 			sourceTree = "<group>";
 		};
 		57026D9D432B395C32C6782B /* Pods */ = {
@@ -118,6 +134,7 @@
 		B55A6ACB22C7444500D4C635 /* PictureCool */ = {
 			isa = PBXGroup;
 			children = (
+				30A9F6BB22C9FAF1007F5692 /* PictureEditController */,
 				30A9F6B122C9E616007F5692 /* Tool */,
 				30031F9122C8397200955F27 /* PhotoBookChooseView.swift */,
 				30A9F6B222C9E639007F5692 /* MainView */,
@@ -291,12 +308,18 @@
 				30A9F6A422C8ABA5007F5692 /* ZImageMaker.swift in Sources */,
 				30031F9622C842A700955F27 /* ColorHelper.swift in Sources */,
 				30031F9222C8397200955F27 /* PhotoBookChooseView.swift in Sources */,
+				30A9F6BD22C9FB0C007F5692 /* PictureEditController.swift in Sources */,
 				B55A776422C8909F00D4C635 /* SaveCore.swift in Sources */,
 				B55A776622C898CD00D4C635 /* HMAC-SHA1.swift in Sources */,
 				B55A776C22C89E1800D4C635 /* GetInformation.swift in Sources */,
+
 				B55A84BE22CB4D4500D4C635 /* DetectPicture.swift in Sources */,
+
+				30A9F6C122CB064E007F5692 /* MainTableViewCell.swift in Sources */,
+
 				30A9F6B422C9EFB6007F5692 /* AnimationView.swift in Sources */,
 				B55A776E22C9907600D4C635 /* linesBase.swift in Sources */,
+				30A9F6BF22CB0630007F5692 /* MainTableView.swift in Sources */,
 				30A9F6BA22C9EFD0007F5692 /* ViewController.swift in Sources */,
 				B55A6ADF22C7446900D4C635 /* PictureCore.swift in Sources */,
 			);
