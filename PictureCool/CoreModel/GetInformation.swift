@@ -38,14 +38,14 @@ class InformationCore{
     
     
     
-    func constructParameter()-> Dictionary<String, String>{
-        var dic = Dictionary<String, String>()
-        dic = [
+    func constructParameter()->Parameters{
+        var para = Parameters()
+        para = [
             "app_id":AppID!,
             "image":(image!.jpegData(compressionQuality: 1))!.base64EncodedString(options: .endLineWithLineFeed),
             "seq":"1234"
         ]
-        return dic
+        return para
     }
     
     

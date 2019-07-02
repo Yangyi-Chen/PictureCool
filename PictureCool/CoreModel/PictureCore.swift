@@ -9,13 +9,17 @@
 import Foundation
 import UIKit
 class PictureProcessCore{
-    var image:UIImage?
+   
     var saveProcessor:saveCore?
     var tag:String?
     
     var theTotalNumberofPicture:Int?
     
     let linesbase:lineBase?
+    
+    
+    
+    
     
     //存图片
     func savePicture(image:UIImage){
@@ -27,6 +31,8 @@ class PictureProcessCore{
     func getPicture(nameNumber:String)-> UIImage{
         return saveProcessor!.getPicture(nameNumber: nameNumber)
     }
+    
+    
     
     //提取所有图片
     func getAllPicture()->Array<UIImage>{
@@ -59,19 +65,9 @@ class PictureProcessCore{
     }
     
     
-    
-    //获取图片中的主要元素，  Main！！ set the tag in linebase here
-    func getTheMainElement(){
-        
-    }
-    
-    //获取图片中次要元素
-    func getTheSecondElement(){
-        
-    }
-    
     //获取诗词数组
     func getTheLines()->Array<String>{
+        linesbase!.tag = self.tag!
         return linesbase!.getlines()
     }
     
@@ -84,7 +80,7 @@ class PictureProcessCore{
     
     private func gettheNumber(){
         let fileurl = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("totalNumber")
-        if fileurl != nil{
+        if FileManager.default.fileExists(atPath: fileurl!.path){
         let data = try! Data(contentsOf: fileurl!)
         let str = String(data: data, encoding: .utf8)
         self.theTotalNumberofPicture = Int(str!)
@@ -98,8 +94,7 @@ class PictureProcessCore{
     
     
     
-    init(_ image: UIImage){
-        self.image = image
+    init(){
         saveProcessor = saveCore()
         linesbase = lineBase()
         gettheNumber()
