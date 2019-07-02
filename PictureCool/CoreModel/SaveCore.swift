@@ -17,13 +17,13 @@ class saveCore{
     
     
     
-    func save(image:UIImage, nameNumber:String){
+    static func save(image:UIImage, nameNumber:String){
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(nameNumber)
         let data = image.jpegData(compressionQuality: 1)
         try! data!.write(to: fileURL)
     }
     
-    func getPicture(nameNumber:String)-> UIImage{
+    static func getPicture(nameNumber:String)-> UIImage{
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(nameNumber)
         let data = try! Data(contentsOf: fileURL)
         let image = (UIImage(data: data))!

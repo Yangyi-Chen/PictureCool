@@ -39,6 +39,7 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
     
     override func viewWillAppear(_ animated: Bool) {
         self.animationView.addPushBehavior()
+        self.tableView.allPicture = PictureProcessCore.shared.getAllPicture()
         self.tableView.reloadData()
     }
     override func viewDidLoad() {

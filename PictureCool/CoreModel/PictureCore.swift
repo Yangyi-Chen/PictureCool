@@ -10,28 +10,34 @@ import Foundation
 import UIKit
 class PictureProcessCore{
     var image:UIImage?
-    var saveProcessor:saveCore?
+   // var saveProcessor:saveCore?
     var tag:String?
     
     var theTotalNumberofPicture:Int?
     
     let linesbase:lineBase?
     
+    private static var instance = PictureProcessCore()
+    
+    class var shared:PictureProcessCore {return instance}
+    
     //存图片
     func savePicture(image:UIImage){
-        saveProcessor!.save(image: image, nameNumber: String(theTotalNumberofPicture!))
+        saveCore.save(image: image, nameNumber: String(theTotalNumberofPicture!))
         theTotalNumberofPicture = theTotalNumberofPicture! + 1
+        print("in save num is \(theTotalNumberofPicture)")
     }
     
     //提取图片
     func getPicture(nameNumber:String)-> UIImage{
-        return saveProcessor!.getPicture(nameNumber: nameNumber)
+        return saveCore.getPicture(nameNumber: nameNumber)
     }
     
     //提取所有图片
     func getAllPicture()->Array<UIImage>{
         var array = Array<UIImage>()
         var i = 0
+        print("in get num is \(theTotalNumberofPicture)")
         while(i<theTotalNumberofPicture!){
             let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(String(i))
             let data = try! Data(contentsOf: fileURL)
@@ -100,7 +106,7 @@ class PictureProcessCore{
     
     init(){
         
-        saveProcessor = saveCore()
+     //   saveProcessor = saveCore()
         linesbase = lineBase()
         gettheNumber()
     }

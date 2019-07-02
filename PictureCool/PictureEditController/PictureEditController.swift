@@ -191,8 +191,8 @@ class PictureEditController: UIViewController {
     }
     
     @objc func saveToTable(){
-        let core = PictureProcessCore()
-        core.savePicture(image: nowImage!)
+        PictureProcessCore.shared.savePicture(image: nowImage!)
+        PictureProcessCore.shared.saveModel()
         self.navigationController?.popViewController(animated: true)
     }
 }

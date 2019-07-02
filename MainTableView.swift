@@ -18,7 +18,7 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = MainTableViewCell(style: .default, reuseIdentifier: "MainTableViewCell")
-        cell.imageView?.image = allPicture![indexPath.row]
+        cell.pictureView.image = allPicture![indexPath.row]
         return cell
     }
     
@@ -32,6 +32,22 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource {
         return nib
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        PictureProcessCore.shared.deletePicture(nameNumber: String(indexPath.row))
+        allPicture = PictureProcessCore.shared.getAllPicture()
+        self.deleteRows(at: [indexPath], with: .left)
+        PictureProcessCore.shared.saveModel()
+        //reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 120
     }
@@ -42,8 +58,8 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource {
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
-        let core = PictureProcessCore()
-        allPicture = core.getAllPicture()
+        allPicture = PictureProcessCore.shared.getAllPicture()
+        print("allPictue.count = \(allPicture!.count)")
         self.register(MainTableViewCell.self, forCellReuseIdentifier: "MainTableViewCell")
         
         self.delegate=self
