@@ -32,6 +32,11 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource {
         return nib
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = PictureEditController()
+        vc.nowImage = allPicture![indexPath.row]
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         PictureProcessCore.shared.deletePicture(nameNumber: String(indexPath.row))
         allPicture = PictureProcessCore.shared.getAllPicture()
