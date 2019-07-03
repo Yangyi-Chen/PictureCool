@@ -8,4 +8,5 @@ target 'PictureCool' do
   # Pods for PictureCool
     pod 'SnapKit' 
     pod 'Alamofire'
+    pod 'MBProgressHUD', '~> 1.1.0'
 end

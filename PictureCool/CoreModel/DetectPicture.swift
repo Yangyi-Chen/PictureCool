@@ -31,20 +31,20 @@ class detectCore{
     
     
     init(image:UIImage){
-        getinformation(image: image)
+    
     }
     
     
     
     
-    private func getinformation(image:UIImage){
+    func getinformation(imageSpecial:UIImage,handler:@escaping () -> ()){
         getTheToken()
         while(Token == nil){
             
         }
         Alamofire.request(URL(string: "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general"+"?access_token="+Token!)!,
                           method: .post,
-                          parameters: constructParameters(image: image),
+                          parameters: constructParameters(image: imageSpecial),
                           encoding: URLEncoding.default,
                           headers: constructHeader()).responseJSON{(response) in
                             let jsonData = response.data!
@@ -52,6 +52,7 @@ class detectCore{
                             self.firstElement = (arr[0] as! NSDictionary)["keyword"] as! String
                             self.secondElement = (arr[1] as! NSDictionary)["keyword"] as! String
                             print(self.firstElement)
+                            handler()
         }
     }
     

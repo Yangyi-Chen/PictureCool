@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SnapKit
+import MBProgressHUD
 
 class PictureEditController: UIViewController {
     
@@ -17,6 +17,7 @@ class PictureEditController: UIViewController {
     var labelPan:UIPanGestureRecognizer?
     var beganPanPoint:CGPoint?
     var detectcore:detectCore?
+    var tag:String?
     
     
     
@@ -25,9 +26,12 @@ class PictureEditController: UIViewController {
     
     lazy var pLabel = { () -> UILabel in
         let temp = UILabel()
-        temp.frame.size = CGSize(width: 100, height: 50)
-        
-        temp.textColor = UIColor.red
+        temp.frame.size = CGSize(width: 300, height: 100)
+        temp.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+        temp.font = temp.font.withSize(25)
+        temp.adjustsFontSizeToFitWidth = true
+        //temp.sizeToFit()
+        temp.textColor = UIColor.rose
         return temp
     }()
     lazy var reloadBtn = { () -> UIButton in
@@ -75,8 +79,9 @@ class PictureEditController: UIViewController {
         temp.layer.borderWidth = 0
         //temp.layer.cornerRadius = 15
         temp.layer.borderColor = UIColor.snow.cgColor
-        temp.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+//        temp.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
 //        temp.frame.size = CGSize(width: self.view.frame.width-40, height: self.view.frame.height/5*2)
+        temp.frame.size.width = self.view.frame.width
         temp.contentMode = .scaleAspectFit
         temp.clipsToBounds = true
         return temp
@@ -86,12 +91,12 @@ class PictureEditController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //测试图片
-        detectcore = detectCore(image: nowImage!)
+        
         self.view.backgroundColor = UIColor.tintDark
         //addAnimationView()
         setAll()
         addSwipeGes()
-        getPictureToPoem()
+        asyncGroupFunc()
     }
     
     private func addAnimationView(){
@@ -100,6 +105,8 @@ class PictureEditController: UIViewController {
     }
     
      func setAll(){
+        imageView.frame.size.height = nowImage!.size.height * imageView.frame.size.width / nowImage!.size.width
+        imageView.center = self.view.center
         imageView.image = nowImage
         self.view.addSubview(imageView)
 //        imageView.snp.makeConstraints { (make) in
@@ -110,7 +117,7 @@ class PictureEditController: UIViewController {
 //        }
         self.view.addSubview(saveToBookBtn)
         self.view.addSubview(saveToTableBtn)
-        self.imageView.addSubview(reloadBtn)
+        self.view.addSubview(reloadBtn)
         setLabelInBtn()
     }
     
@@ -155,11 +162,53 @@ class PictureEditController: UIViewController {
     
     private func getPictureToPoem(){
         self.imageView.addSubview(pLabel)
-        pLabel.center = imageView.center
-        pLabel.text = "三生三世十里桃花"
+        //pLabel.center = imageView.center
+        
+        tag = detectcore?.getTheMainElement()
+        let tempText = PictureProcessCore.shared.getTheLines(tag: (tag)!, label: pLabel)
+        pLabel.text = tempText
+        
     }
     
-    
+    private func asyncGroupFunc(){
+        
+//        let queue = DispatchQueue.init(label: "test", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
+        
+        
+            let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+            hud.show(animated: true)
+            hud.labelText = "请等待"
+//            self.detectcore = detectCore(image: self.nowImage!)
+//
+//
+//            self.getPictureToPoem()
+        
+                //self.getPictureToPoem()
+        let queue = DispatchQueue(label: "requestHandler")
+        //分组
+        let group = DispatchGroup()
+        weak var weakSelf =  self
+        //第一个网络请求，查询群信息
+        let sema = DispatchSemaphore(value: 0)
+        queue.async(group: group) {
+            
+            self.detectcore = detectCore(image: self.nowImage!)
+            self.detectcore!.getinformation(imageSpecial: self.nowImage!){
+                sema.signal()
+                sema.signal()
+                print("signal")
+            }
+            
+            sema.wait()
+        }
+        group.notify(queue: DispatchQueue.main, execute: {[weak self] in
+            //tableView同时用到了两个请求到返回结果
+            
+            hud.hide(animated: true)
+            self!.getPictureToPoem()
+        })
+        
+    }
     
     
     
@@ -248,8 +297,24 @@ class PictureEditController: UIViewController {
     }
     
     @objc func saveToTable(){
-        PictureProcessCore.shared.savePicture(image: nowImage!)
+        
+        
+        reloadBtn.isHidden = true
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.show(animated: true)
+        hud.labelText = "请等待"
+        
+        
+        let picture = DrawTool.drawIn(imageView: self.imageView)
+            
+        //hud.hide(animated: true)
+        PictureProcessCore.shared.savePicture(image: picture)
         PictureProcessCore.shared.saveModel()
         self.navigationController?.popViewController(animated: true)
+            
+        
+        
+        
     }
+    
 }
