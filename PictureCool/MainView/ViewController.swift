@@ -30,10 +30,9 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
         let temp = UIButton()
         temp.setImage(ZImageMaker.bigPhotoBookImage(), for: .normal)
         temp.tintColor = UIColor.white
-        
         temp.addTarget(self, action: #selector(photoBookBtnTarget(btn:)), for: .touchUpInside)
         temp.isHidden = true
-        
+
         return temp
     }()
     
@@ -66,6 +65,7 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
     private func setAddButton(){
         let addBtn = UIButton(frame: CGRect(x: self.view.bounds.width/2-35, y: self.view.bounds.height-100, width: 70, height: 70))
         addBtn.tintColor = UIColor.white
+        
         addBtn.setImage(ZImageMaker.makeAddImage(), for: .normal)
 //        let imageView = UIImageView(image: ZImageMaker.makeAddImage())
 //        imageView.frame = CGRect(x: self.view.bounds.width/2-35, y: self.view.bounds.height-100, width: 70, height: 70)
@@ -136,11 +136,18 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
             scaleAnim.byValue = 0.2
             
             btn.layer.add(rotationAnim, forKey: nil)
-            camera.layer.add(animGroupRight, forKey: nil)
+            //camera.layer.add(animGroupRight, forKey: nil)
             //camera.layer.add(scaleAnim, forKey: "transform.scale.z")
-            photoBook.layer.add(animGroupLeft, forKey: nil)
+            //photoBook.layer.add(animGroupLeft, forKey: nil)
           //  photoBook.layer.add(scaleAnim, forKey: "transform.scale.z")
+           
             
+            UIView.animate(withDuration: 0.3, animations: {
+                self.camera.center = CGPoint(x: self.view.frame.width/2+100, y: self.view.bounds.height-150)
+                self.photoBook.center = CGPoint(x: self.view.frame.width/2-100, y: self.view.bounds.height-150)
+            }) { (true) in
+                
+            }
             
         }else{
             btn.tag = 0
@@ -156,8 +163,15 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
             animGroupLeft.animations = [scaleAnim,positionAnimLeft]
             
             btn.layer.add(rotationAnim, forKey: nil)
-            camera.layer.add(animGroupRight, forKey: nil)
-            photoBook.layer.add(animGroupLeft, forKey: nil)
+            //camera.layer.add(animGroupRight, forKey: nil)
+            //photoBook.layer.add(animGroupLeft, forKey: nil)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.camera.center = btn.center
+                self.photoBook.center = btn.center
+            }) { (true) in
+                self.camera.isHidden = true
+                self.photoBook.isHidden = true
+            }
         }
     }
     

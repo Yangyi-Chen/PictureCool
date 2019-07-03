@@ -12,7 +12,7 @@ import Social
 class AppriciateViewController: PictureEditController {
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //super.viewDidLoad()
         self.view.backgroundColor = UIColor.tintDark
         //addAnimationView()
         setAll()

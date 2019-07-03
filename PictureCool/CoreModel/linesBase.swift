@@ -7,35 +7,40 @@
 //
 
 import Foundation
+import UIKit
 class lineBase{
     
     
     
     
     var tag:String?
+    var finalLines:String?
     
     
-    
-    func getlines()->Array<String>{
-        let request = URLRequest(url: URL(string: "https://api.gushi.ci/" + tag!)!)
-        var strArr = Array<String>()
-        var i = 0
-        while(i<10){
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                guard let data = data, error == nil else {
-                    return
-                }
-                let str = ((try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Dictionary<String, String>)["content"])!
-                strArr.append(str)
-                
+    func getlines(label:UILabel){
+        
+        let url = URL(string: "https://api.gushi.ci/" + tag!)
+        let request = URLRequest(url: url!)
+        let semaPhore = DispatchSemaphore(value: 0)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                return
             }
-            task.resume()
-            i = i+1
+            let str = ((try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Dictionary<String, String>)["content"])!
+            self.finalLines = str
+            DispatchQueue.main.async {
+                 label.text = str
+            }
+           
+            
+            semaPhore.signal()
+            
         }
-        return strArr
+        task.resume()
+        _ = semaPhore.wait(timeout: DispatchTime.distantFuture)
         
     }
-    
     
     
     

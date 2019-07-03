@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 class PictureProcessCore{
-    
+
     
     var theTotalNumberofPicture:Int?
     
     let linesbase:lineBase?
-    
+    var picturebase:PictureBase?
 
-    
-    
+
     private static var instance = PictureProcessCore()
     
     class var shared:PictureProcessCore {return instance}
+
 
     //存图片
     func savePicture(image:UIImage){
@@ -68,11 +68,18 @@ class PictureProcessCore{
     }
     
     
-    //获取诗词数组
-    func getTheLines(tag:String)->Array<String>{
-        linesbase!.tag = tag
-        return linesbase!.getlines()
+
+    //获取诗词 随机一句
+    func getTheLines(tag:String,label:UILabel)->String{
+        let newTag = picturebase?.match(matchString: tag)
+        linesbase!.tag = newTag
+        linesbase?.getlines(label: label)
+        return linesbase!.finalLines!
     }
+    
+    
+    
+    
     
     //程序结束前一定要调用， 保存模型中的数据！！！
     func saveModel(){
@@ -98,8 +105,10 @@ class PictureProcessCore{
     
     
     init(){
+
         linesbase = lineBase()
         gettheNumber()
+        picturebase = PictureBase()
     }
     
     
