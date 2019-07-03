@@ -13,6 +13,8 @@ class detectCore{
     var Token:String?
     var firstElement:String?
     var secondElement:String?
+    var image:UIImage?
+    
     
     
     //获取图片中的主要元素，  Main！！ set the tag in linebase here

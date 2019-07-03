@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate {
 
     var animationView:AnimationView!
     var tapGes:UITapGestureRecognizer!
@@ -92,7 +92,16 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
     private func addTapGes(){
         tapGes = UITapGestureRecognizer()
         tapGes.addTarget(self, action: #selector(tapGesTarget(sender:)))
+        tapGes.delegate = self
         self.tableView.addGestureRecognizer(tapGes)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isKind(of: MainTableView.self))! {
+            return true
+        }else{
+            return false
+        }
     }
     
     @objc func tapGesTarget(sender:UITapGestureRecognizer){
@@ -199,6 +208,11 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
     private func addTableView(){
         tableView = MainTableView(frame: self.view.frame, style: .grouped)
         tableView.backgroundColor = nil
+        tableView.push = { (make) in
+            let vc = AppriciateViewController()
+            vc.nowImage = make
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         self.view.addSubview(tableView)
     }
 //    private func setCameraPhotoBtn(){
