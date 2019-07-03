@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 class saveCore{
+
+
+    
+    
+    
+    
+    
     
     static func save(image:UIImage, nameNumber:String){
-
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(nameNumber)
         let data = image.jpegData(compressionQuality: 1)
         try! data!.write(to: fileURL)

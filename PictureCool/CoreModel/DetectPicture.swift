@@ -11,10 +11,11 @@ import Alamofire
 class detectCore{
     
     var Token:String?
-    var firstElement:String?
-    var secondElement:String?
+    private var firstElement:String?
+    private var secondElement:String?
+    var image:UIImage?
     
-    let signal = DispatchSemaphore(value: 0)
+    
     
     
     //获取图片中的主要元素，  Main！！ set the tag in linebase here
@@ -38,6 +39,9 @@ class detectCore{
     
     private func getinformation(image:UIImage){
         getTheToken()
+        while(Token == nil){
+            
+        }
         Alamofire.request(URL(string: "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general"+"?access_token="+Token!)!,
                           method: .post,
                           parameters: constructParameters(image: image),
@@ -45,11 +49,10 @@ class detectCore{
                           headers: constructHeader()).responseJSON{(response) in
                             let jsonData = response.data!
                             let arr = (try! JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! NSDictionary)["result"] as! NSArray
-                            _ = self.firstElement = (arr[0] as! NSDictionary)["keyword"] as! String
-                            _ = self.secondElement = (arr[1] as! NSDictionary)["keyword"] as! String
-                            self.signal.signal()
+                            self.firstElement = (arr[0] as! NSDictionary)["keyword"] as! String
+                            self.secondElement = (arr[1] as! NSDictionary)["keyword"] as! String
+                            print(self.firstElement)
         }
-        _ = signal.wait(timeout: .distantFuture)
     }
     
     

@@ -14,8 +14,22 @@ class PictureEditController: UIViewController {
     var nowImage:UIImage?
     var panGes:UIPanGestureRecognizer?
     var reloadPan:UIPanGestureRecognizer?
+    var labelPan:UIPanGestureRecognizer?
     var beganPanPoint:CGPoint?
+    var detectcore:detectCore?
     
+    
+    
+    
+    
+    
+    lazy var pLabel = { () -> UILabel in
+        let temp = UILabel()
+        temp.frame.size = CGSize(width: 100, height: 50)
+        
+        temp.textColor = UIColor.red
+        return temp
+    }()
     lazy var reloadBtn = { () -> UIButton in
         let temp = UIButton()
         temp.frame = CGRect(x: 100, y: 0, width: 60, height: 60)
@@ -24,26 +38,25 @@ class PictureEditController: UIViewController {
         temp.isUserInteractionEnabled = true
         temp.setImage(ZImageMaker.makeRefreshImage(), for: .normal)
         temp.tintColor = UIColor.white
+        temp.addTarget(self, action:#selector(refresh), for: UIControl.Event.touchUpInside)
         return temp
     }()
+    
+    @objc private func refresh(){
+        PictureProcessCore.shared.getTheLines(tag: (detectcore?.getTheMainElement())!, label: pLabel)
+    }
+    
+    
     
     lazy var saveToBookBtn = { () -> UIButton in
         let temp = UIButton()
         temp.frame = CGRect(x: self.view.frame.width, y: 0, width: 100, height: self.view.frame.height/2)
-        temp.backgroundColor = UIColor.stillBlue
+        temp.backgroundColor = UIColor.darkGray
 //        temp.setTitle("同时保存到相册与库", for: .normal)
 //        temp.titleEdgeInsets = UIEdgeInsets(top: temp.frame.height/2-40, left: 25, bottom: temp.frame.height/2-40, right: 25)
 //        temp.titleLabel?.font = UIFont(name: "黑体", size: 25)
 //        temp.titleLabel?.textColor = UIColor.tintDark
-        let label = UILabel(frame: CGRect(x: 5, y: temp.frame.height/2-60, width: 90, height: 120))
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.text = "同时\n保存\n到\n相册\n与库"
-        label.font = UIFont(name: "黑体", size: 40)
-        label.font.withSize(36)
-        label.textColor = UIColor.white
-        temp.addSubview(label)
+        
         temp.addTarget(self, action: #selector(saveToBook), for: .touchUpInside)
         return temp
     }()
@@ -51,16 +64,8 @@ class PictureEditController: UIViewController {
     lazy var saveToTableBtn = { () -> UIButton in
         let temp = UIButton()
         temp.frame = CGRect(x: self.view.frame.width, y: self.view.frame.height/2, width: 100, height: self.view.frame.height/2)
-        temp.backgroundColor = UIColor.skyBlue
-        let label = UILabel(frame: CGRect(x: 5, y: temp.frame.height/2-60, width: 90, height: 120))
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.text = "仅\n保存\n到库"
-        label.font = UIFont(name: "黑体", size: 40)
-        label.font.withSize(36)
-        label.textColor = UIColor.white
-        temp.addSubview(label)
+        temp.backgroundColor = UIColor.tintDark
+        
         temp.addTarget(self, action: #selector(saveToTable), for: .touchUpInside)
         return temp
     }()
@@ -80,10 +85,13 @@ class PictureEditController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //测试图片
+        detectcore = detectCore(image: nowImage!)
         self.view.backgroundColor = UIColor.tintDark
         //addAnimationView()
         setAll()
         addSwipeGes()
+        getPictureToPoem()
     }
     
     private func addAnimationView(){
@@ -91,7 +99,7 @@ class PictureEditController: UIViewController {
         self.view.addSubview(animationView)
     }
     
-    private func setAll(){
+     func setAll(){
         imageView.image = nowImage
         self.view.addSubview(imageView)
 //        imageView.snp.makeConstraints { (make) in
@@ -103,9 +111,29 @@ class PictureEditController: UIViewController {
         self.view.addSubview(saveToBookBtn)
         self.view.addSubview(saveToTableBtn)
         self.imageView.addSubview(reloadBtn)
+        setLabelInBtn()
     }
     
-    private func addSwipeGes(){
+    func setLabelInBtn()
+    {
+        
+        saveToBookBtn.addSubview(createLabel(text: "同时\n保存\n到\n相册\n与库"))
+        saveToTableBtn.addSubview(createLabel(text: "仅\n保存\n到库"))
+    }
+    
+    func createLabel(text:String)->UILabel{
+        let label = UILabel(frame: CGRect(x: 5, y: saveToTableBtn.frame.height/2-60, width: 90, height: 120))
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.text = text
+        label.font = UIFont(name: "黑体", size: 40)
+        //label.font.withSize(36)
+        label.textColor = UIColor.white
+        return label
+    }
+    
+     func addSwipeGes(){
         panGes = UIPanGestureRecognizer()
         panGes!.addTarget(self, action: #selector(swipeLeft(sender:)))
   
@@ -117,6 +145,34 @@ class PictureEditController: UIViewController {
   
         self.reloadBtn.isUserInteractionEnabled = true
         self.reloadBtn.addGestureRecognizer(reloadPan!)
+        
+        labelPan = UIPanGestureRecognizer()
+        labelPan!.addTarget(self, action: #selector(panLabel(sender:)))
+        
+        self.pLabel.isUserInteractionEnabled = true
+        self.pLabel.addGestureRecognizer(labelPan!)
+    }
+    
+    private func getPictureToPoem(){
+        self.imageView.addSubview(pLabel)
+        pLabel.center = imageView.center
+        pLabel.text = "三生三世十里桃花"
+    }
+    
+    
+    
+    
+    
+    
+    
+    @objc func panLabel(sender:UIPanGestureRecognizer){
+        if sender.state == .changed{
+            pLabel.center = sender.location(in: self.imageView)
+            
+        }
+        if sender.state == .ended{
+            pLabel.center = sender.location(in: self.imageView)
+        }
     }
     
     @objc func panReload(sender:UIPanGestureRecognizer){
@@ -187,6 +243,7 @@ class PictureEditController: UIViewController {
         }
     }
     @objc func saveToBook(){
+        
         
     }
     

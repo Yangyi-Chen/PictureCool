@@ -8,9 +8,11 @@
 
 import UIKit
 
-class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource {
+class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate {
     
     var allPicture:[UIImage]?
+    typealias pushValue = (UIImage)->()
+    var push:pushValue?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allPicture!.count
@@ -33,8 +35,8 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = PictureEditController()
-        vc.nowImage = allPicture![indexPath.row]
+        push!(allPicture![indexPath.row])
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

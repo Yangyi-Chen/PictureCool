@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 class lineBase{
     
     
@@ -16,8 +17,10 @@ class lineBase{
     var finalLines:String?
     
     
-    func getlines(){
-        let request = URLRequest(url: URL(string: "https://api.gushi.ci/" + tag!)!)
+    func getlines(label:UILabel){
+        
+        let url = URL(string: "https://api.gushi.ci/" + tag!)
+        let request = URLRequest(url: url!)
         let semaPhore = DispatchSemaphore(value: 0)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -26,8 +29,13 @@ class lineBase{
             }
             let str = ((try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Dictionary<String, String>)["content"])!
             self.finalLines = str
-            print(self.finalLines!)
+            DispatchQueue.main.async {
+                 label.text = str
+            }
+           
+            
             semaPhore.signal()
+            
         }
         task.resume()
         _ = semaPhore.wait(timeout: DispatchTime.distantFuture)
