@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SnapKit
+import MBProgressHUD
 
 class PictureEditController: UIViewController {
     
@@ -227,8 +227,24 @@ class PictureEditController: UIViewController {
     }
     
     @objc func saveToTable(){
-        PictureProcessCore.shared.savePicture(image: nowImage!)
+        
+        
+        reloadBtn.isHidden = true
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.show(animated: true)
+        hud.labelText = "请等待"
+        
+        
+        let picture = DrawTool.drawIn(imageView: self.imageView)
+            
+        //hud.hide(animated: true)
+        PictureProcessCore.shared.savePicture(image: picture)
         PictureProcessCore.shared.saveModel()
         self.navigationController?.popViewController(animated: true)
+            
+        
+        
+        
     }
+    
 }
