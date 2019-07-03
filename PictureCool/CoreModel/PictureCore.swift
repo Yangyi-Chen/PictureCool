@@ -9,28 +9,18 @@
 import Foundation
 import UIKit
 class PictureProcessCore{
-<<<<<<< HEAD
-   
-    var saveProcessor:saveCore?
-=======
-    var image:UIImage?
-   // var saveProcessor:saveCore?
->>>>>>> bc4b9435ae046103e45a4802723d1bdb7e42c178
+
     var tag:String?
     
     var theTotalNumberofPicture:Int?
     
     let linesbase:lineBase?
     
-<<<<<<< HEAD
-    
-    
-    
-=======
+
     private static var instance = PictureProcessCore()
     
     class var shared:PictureProcessCore {return instance}
->>>>>>> bc4b9435ae046103e45a4802723d1bdb7e42c178
+
     
     //存图片
     func savePicture(image:UIImage){
@@ -78,10 +68,11 @@ class PictureProcessCore{
     }
     
     
-    //获取诗词数组
-    func getTheLines()->Array<String>{
+    //获取诗词 随机一句
+    func getTheLines()->String{
         linesbase!.tag = self.tag!
-        return linesbase!.getlines()
+        linesbase?.getlines()
+        return linesbase!.finalLines!
     }
     
     //程序结束前一定要调用， 保存模型中的数据！！！
@@ -108,12 +99,7 @@ class PictureProcessCore{
     
     
     init(){
-<<<<<<< HEAD
-        saveProcessor = saveCore()
-=======
-        
-     //   saveProcessor = saveCore()
->>>>>>> bc4b9435ae046103e45a4802723d1bdb7e42c178
+
         linesbase = lineBase()
         gettheNumber()
     }

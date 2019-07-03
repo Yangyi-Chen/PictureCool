@@ -21,6 +21,7 @@
 		30A9F6C522CB53BA007F5692 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6C422CB53BA007F5692 /* MainTableViewCell.swift */; };
 		30A9F6C722CB53C2007F5692 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6C622CB53C2007F5692 /* MainTableView.swift */; };
 		367A9424C351D39E305B7DFA /* Pods_PictureCool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */; };
+		B534D30722CC31F1000FEFB3 /* PitureBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D30622CC31F1000FEFB3 /* PitureBase.swift */; };
 		B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD022C7444500D4C635 /* Main.storyboard */; };
 		B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD322C7444700D4C635 /* Assets.xcassets */; };
 		B55A6ADF22C7446900D4C635 /* PictureCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6ADE22C7446800D4C635 /* PictureCore.swift */; };
@@ -46,6 +47,7 @@
 		30A9F6C422CB53BA007F5692 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTableViewCell.swift; path = PictureCool/MainView/MainTableViewCell.swift; sourceTree = "<group>"; };
 		30A9F6C622CB53C2007F5692 /* MainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTableView.swift; path = PictureCool/MainView/MainTableView.swift; sourceTree = "<group>"; };
 		AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureCool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B534D30622CC31F1000FEFB3 /* PitureBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitureBase.swift; sourceTree = "<group>"; };
 		B55A6AC922C7444500D4C635 /* PictureCool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureCool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55A6AD122C7444500D4C635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B55A6AD322C7444700D4C635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				B55A6ADE22C7446800D4C635 /* PictureCore.swift */,
+				B534D30622CC31F1000FEFB3 /* PitureBase.swift */,
 				B55A84BD22CB4D4500D4C635 /* DetectPicture.swift */,
 				B55A776D22C9907600D4C635 /* linesBase.swift */,
 				B55A776522C898CD00D4C635 /* HMAC-SHA1.swift */,
@@ -316,15 +319,9 @@
 				B55A776422C8909F00D4C635 /* SaveCore.swift in Sources */,
 				B55A776622C898CD00D4C635 /* HMAC-SHA1.swift in Sources */,
 				B55A776C22C89E1800D4C635 /* GetInformation.swift in Sources */,
-
-
 				B55A84BE22CB4D4500D4C635 /* DetectPicture.swift in Sources */,
-
-				
-
-
+				B534D30722CC31F1000FEFB3 /* PitureBase.swift in Sources */,
 				30A9F6C522CB53BA007F5692 /* MainTableViewCell.swift in Sources */,
-
 				30A9F6B422C9EFB6007F5692 /* AnimationView.swift in Sources */,
 				B55A776E22C9907600D4C635 /* linesBase.swift in Sources */,
 				30A9F6C322CB526D007F5692 /* AppriciateViewController.swift in Sources */,

@@ -14,6 +14,8 @@ class detectCore{
     var firstElement:String?
     var secondElement:String?
     
+    let signal = DispatchSemaphore(value: 0)
+    
     
     //获取图片中的主要元素，  Main！！ set the tag in linebase here
     func getTheMainElement()->String{
@@ -27,28 +29,27 @@ class detectCore{
     
     
     
-    init(){
-        getinformation()
+    init(image:UIImage){
+        getinformation(image: image)
     }
     
     
     
     
-    private func getinformation(){
+    private func getinformation(image:UIImage){
         getTheToken()
-        while Token == nil {
-        }
         Alamofire.request(URL(string: "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general"+"?access_token="+Token!)!,
                           method: .post,
-                          parameters: constructParameters(),
+                          parameters: constructParameters(image: image),
                           encoding: URLEncoding.default,
                           headers: constructHeader()).responseJSON{(response) in
                             let jsonData = response.data!
                             let arr = (try! JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! NSDictionary)["result"] as! NSArray
-                            self.firstElement = (arr[0] as! NSDictionary)["keyword"] as! String
-                            self.secondElement = (arr[1] as! NSDictionary)["keyword"] as! String
-                            
+                            _ = self.firstElement = (arr[0] as! NSDictionary)["keyword"] as! String
+                            _ = self.secondElement = (arr[1] as! NSDictionary)["keyword"] as! String
+                            self.signal.signal()
         }
+        _ = signal.wait(timeout: .distantFuture)
     }
     
     
@@ -83,12 +84,11 @@ extension detectCore{
     
     
     
-    private func constructParameters()->Parameters{
+    private func constructParameters(image:UIImage)->Parameters{
         var par = Parameters()
-        let file = Bundle.main.path(forResource: "涂鸦", ofType: "jpg")!
-        let fileUrl = URL(fileURLWithPath: file)
-        let fileData = try! Data(contentsOf: fileUrl)
-        let base64 = fileData.base64EncodedString(options: .endLineWithLineFeed)
+        
+        let fileData = image.jpegData(compressionQuality: 1)
+        let base64 = fileData!.base64EncodedString(options: .endLineWithLineFeed)
         par = [
             "image" : base64
         ]
