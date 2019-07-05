@@ -24,6 +24,7 @@
 		367A9424C351D39E305B7DFA /* Pods_PictureCool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */; };
 		B534D30722CC31F1000FEFB3 /* PitureBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D30622CC31F1000FEFB3 /* PitureBase.swift */; };
 		B534D34B22CDF532000FEFB3 /* SaveCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D34A22CDF532000FEFB3 /* SaveCloud.swift */; };
+		B534D38922CF2D5C000FEFB3 /* loginCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D38822CF2D5C000FEFB3 /* loginCenter.swift */; };
 		B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD022C7444500D4C635 /* Main.storyboard */; };
 		B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD322C7444700D4C635 /* Assets.xcassets */; };
 		B55A6ADF22C7446900D4C635 /* PictureCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6ADE22C7446800D4C635 /* PictureCore.swift */; };
@@ -54,6 +55,7 @@
 		AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureCool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B534D30622CC31F1000FEFB3 /* PitureBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitureBase.swift; sourceTree = "<group>"; };
 		B534D34A22CDF532000FEFB3 /* SaveCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveCloud.swift; sourceTree = "<group>"; };
+		B534D38822CF2D5C000FEFB3 /* loginCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginCenter.swift; sourceTree = "<group>"; };
 		B55A6AC922C7444500D4C635 /* PictureCool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureCool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55A6AD122C7444500D4C635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B55A6AD322C7444700D4C635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				B534D30622CC31F1000FEFB3 /* PitureBase.swift */,
 				B55A84BD22CB4D4500D4C635 /* DetectPicture.swift */,
 				B534D34A22CDF532000FEFB3 /* SaveCloud.swift */,
+				B534D38822CF2D5C000FEFB3 /* loginCenter.swift */,
 				B55A776D22C9907600D4C635 /* linesBase.swift */,
 				B55A776522C898CD00D4C635 /* HMAC-SHA1.swift */,
 				B55A776B22C89E1800D4C635 /* GetInformation.swift */,
@@ -328,6 +331,7 @@
 				30A9F6A422C8ABA5007F5692 /* ZImageMaker.swift in Sources */,
 				30031F9622C842A700955F27 /* ColorHelper.swift in Sources */,
 				30031F9222C8397200955F27 /* PhotoBookChooseView.swift in Sources */,
+				B534D38922CF2D5C000FEFB3 /* loginCenter.swift in Sources */,
 				30A9F6BD22C9FB0C007F5692 /* PictureEditController.swift in Sources */,
 				B55A776422C8909F00D4C635 /* SaveCore.swift in Sources */,
 				B55A776622C898CD00D4C635 /* HMAC-SHA1.swift in Sources */,
