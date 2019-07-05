@@ -21,6 +21,16 @@
 		30A9F6C522CB53BA007F5692 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6C422CB53BA007F5692 /* MainTableViewCell.swift */; };
 		30A9F6C722CB53C2007F5692 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6C622CB53C2007F5692 /* MainTableView.swift */; };
 		30A9F6C922CC3F3D007F5692 /* DrawTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6C822CC3F3D007F5692 /* DrawTool.swift */; };
+		30A9F6CB22CD8B39007F5692 /* SocialTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6CA22CD8B39007F5692 /* SocialTableView.swift */; };
+		30A9F6CD22CD8C49007F5692 /* BasicScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6CC22CD8C49007F5692 /* BasicScrollView.swift */; };
+		30A9F6CF22CD95DA007F5692 /* FakeSocialNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6CE22CD95DA007F5692 /* FakeSocialNavView.swift */; };
+		30A9F6D122CD9601007F5692 /* FakeSocialNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A9F6D022CD9601007F5692 /* FakeSocialNavView.xib */; };
+		30A9F6D322CD99E8007F5692 /* SocialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6D222CD99E8007F5692 /* SocialTableViewCell.swift */; };
+		30A9F6D622CDE49D007F5692 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6D522CDE49C007F5692 /* LoginViewController.swift */; };
+		30A9F6D822CDEB8E007F5692 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A9F6D722CDEB8E007F5692 /* RegisterView.xib */; };
+		30A9F6DA22CDF062007F5692 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A9F6D922CDF062007F5692 /* LoginView.xib */; };
+		30A9F6DC22CDF2DC007F5692 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6DB22CDF2DC007F5692 /* RegisterView.swift */; };
+		30A9F6DE22CDF2F3007F5692 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6DD22CDF2F3007F5692 /* LoginView.swift */; };
 		367A9424C351D39E305B7DFA /* Pods_PictureCool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */; };
 		B534D30722CC31F1000FEFB3 /* PitureBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D30622CC31F1000FEFB3 /* PitureBase.swift */; };
 		B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD022C7444500D4C635 /* Main.storyboard */; };
@@ -48,6 +58,16 @@
 		30A9F6C422CB53BA007F5692 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTableViewCell.swift; path = PictureCool/MainView/MainTableViewCell.swift; sourceTree = "<group>"; };
 		30A9F6C622CB53C2007F5692 /* MainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTableView.swift; path = PictureCool/MainView/MainTableView.swift; sourceTree = "<group>"; };
 		30A9F6C822CC3F3D007F5692 /* DrawTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawTool.swift; sourceTree = "<group>"; };
+		30A9F6CA22CD8B39007F5692 /* SocialTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialTableView.swift; sourceTree = "<group>"; };
+		30A9F6CC22CD8C49007F5692 /* BasicScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScrollView.swift; sourceTree = "<group>"; };
+		30A9F6CE22CD95DA007F5692 /* FakeSocialNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSocialNavView.swift; sourceTree = "<group>"; };
+		30A9F6D022CD9601007F5692 /* FakeSocialNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FakeSocialNavView.xib; sourceTree = "<group>"; };
+		30A9F6D222CD99E8007F5692 /* SocialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialTableViewCell.swift; sourceTree = "<group>"; };
+		30A9F6D522CDE49C007F5692 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		30A9F6D722CDEB8E007F5692 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
+		30A9F6D922CDF062007F5692 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		30A9F6DB22CDF2DC007F5692 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		30A9F6DD22CDF2F3007F5692 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		60E82D0274828238DAC987BA /* Pods-PictureCool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureCool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureCool/Pods-PictureCool.debug.xcconfig"; sourceTree = "<group>"; };
 		6422F06C5D1D0E1E7396D4D4 /* Pods-PictureCool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureCool.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureCool/Pods-PictureCool.release.xcconfig"; sourceTree = "<group>"; };
 		AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureCool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +115,12 @@
 			isa = PBXGroup;
 			children = (
 				30A9F6B922C9EFD0007F5692 /* ViewController.swift */,
+				30A9F6CC22CD8C49007F5692 /* BasicScrollView.swift */,
+				30A9F6CA22CD8B39007F5692 /* SocialTableView.swift */,
+				30A9F6D222CD99E8007F5692 /* SocialTableViewCell.swift */,
 				30A9F6B522C9EFBF007F5692 /* FakeNavigationView.swift */,
+				30A9F6CE22CD95DA007F5692 /* FakeSocialNavView.swift */,
+				30A9F6D022CD9601007F5692 /* FakeSocialNavView.xib */,
 				30A9F6B322C9EFB6007F5692 /* AnimationView.swift */,
 				30A9F6B722C9EFC7007F5692 /* FakeNavigationView.xib */,
 				30A9F6C622CB53C2007F5692 /* MainTableView.swift */,
@@ -112,6 +137,18 @@
 				30A9F6C222CB526D007F5692 /* AppriciateViewController.swift */,
 			);
 			path = PictureEditController;
+			sourceTree = "<group>";
+		};
+		30A9F6D422CDE47D007F5692 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				30A9F6D522CDE49C007F5692 /* LoginViewController.swift */,
+				30A9F6DB22CDF2DC007F5692 /* RegisterView.swift */,
+				30A9F6D722CDEB8E007F5692 /* RegisterView.xib */,
+				30A9F6DD22CDF2F3007F5692 /* LoginView.swift */,
+				30A9F6D922CDF062007F5692 /* LoginView.xib */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 		57026D9D432B395C32C6782B /* Pods */ = {
@@ -146,6 +183,7 @@
 		B55A6ACB22C7444500D4C635 /* PictureCool */ = {
 			isa = PBXGroup;
 			children = (
+				30A9F6D422CDE47D007F5692 /* login */,
 				30A9F6BB22C9FAF1007F5692 /* PictureEditController */,
 				30A9F6B122C9E616007F5692 /* Tool */,
 				30031F9122C8397200955F27 /* PhotoBookChooseView.swift */,
@@ -253,8 +291,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A9F6D122CD9601007F5692 /* FakeSocialNavView.xib in Resources */,
 				B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */,
+				30A9F6DA22CDF062007F5692 /* LoginView.xib in Resources */,
 				30A9F6B822C9EFC8007F5692 /* FakeNavigationView.xib in Resources */,
+				30A9F6D822CDEB8E007F5692 /* RegisterView.xib in Resources */,
 				B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +358,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A9F6CF22CD95DA007F5692 /* FakeSocialNavView.swift in Sources */,
 				30A9F6C722CB53C2007F5692 /* MainTableView.swift in Sources */,
+				30A9F6CB22CD8B39007F5692 /* SocialTableView.swift in Sources */,
 				30A9F6C922CC3F3D007F5692 /* DrawTool.swift in Sources */,
 				30A9F6B022C9E579007F5692 /* AppDelegate.swift in Sources */,
 				30A9F6B622C9EFBF007F5692 /* FakeNavigationView.swift in Sources */,
@@ -325,13 +368,18 @@
 				30A9F6A422C8ABA5007F5692 /* ZImageMaker.swift in Sources */,
 				30031F9622C842A700955F27 /* ColorHelper.swift in Sources */,
 				30031F9222C8397200955F27 /* PhotoBookChooseView.swift in Sources */,
+				30A9F6D322CD99E8007F5692 /* SocialTableViewCell.swift in Sources */,
 				30A9F6BD22C9FB0C007F5692 /* PictureEditController.swift in Sources */,
+				30A9F6CD22CD8C49007F5692 /* BasicScrollView.swift in Sources */,
+				30A9F6D622CDE49D007F5692 /* LoginViewController.swift in Sources */,
 				B55A776422C8909F00D4C635 /* SaveCore.swift in Sources */,
+				30A9F6DC22CDF2DC007F5692 /* RegisterView.swift in Sources */,
 				B55A776622C898CD00D4C635 /* HMAC-SHA1.swift in Sources */,
 				B55A776C22C89E1800D4C635 /* GetInformation.swift in Sources */,
 				B55A84BE22CB4D4500D4C635 /* DetectPicture.swift in Sources */,
 				B534D30722CC31F1000FEFB3 /* PitureBase.swift in Sources */,
 				30A9F6C522CB53BA007F5692 /* MainTableViewCell.swift in Sources */,
+				30A9F6DE22CDF2F3007F5692 /* LoginView.swift in Sources */,
 				30A9F6B422C9EFB6007F5692 /* AnimationView.swift in Sources */,
 				B55A776E22C9907600D4C635 /* linesBase.swift in Sources */,
 				30A9F6C322CB526D007F5692 /* AppriciateViewController.swift in Sources */,

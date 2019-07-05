@@ -39,17 +39,29 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
         
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        PictureProcessCore.shared.deletePicture(nameNumber: String(indexPath.row))
-        allPicture = PictureProcessCore.shared.getAllPicture()
-        self.deleteRows(at: [indexPath], with: .left)
-        PictureProcessCore.shared.saveModel()
-        //reloadData()
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        PictureProcessCore.shared.deletePicture(nameNumber: String(indexPath.row))
+//        allPicture = PictureProcessCore.shared.getAllPicture()
+//        self.deleteRows(at: [indexPath], with: .left)
+//        PictureProcessCore.shared.saveModel()
+//        //reloadData()
+//    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction.init(style: .destructive, title: "delete") { (row, indexPath) in
+            
+                PictureProcessCore.shared.deletePicture(nameNumber: String(indexPath.row))
+            self.allPicture = PictureProcessCore.shared.getAllPicture()
+                self.deleteRows(at: [indexPath], with: .left)
+                PictureProcessCore.shared.saveModel()
+        }
+        let pushAction = UITableViewRowAction.init(style: .normal, title: "push") { (row, indexPath) in
+            
+        }
+        return [delete,pushAction]
     }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        return .delete
+//    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -62,6 +74,14 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170
     }
+    
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        if (touch.view?.isKind(of: MainTableViewCell.self))! {
+//            return true
+//        }else{
+//            return false
+//        }
+//    }
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)

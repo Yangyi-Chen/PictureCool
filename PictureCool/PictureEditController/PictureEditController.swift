@@ -145,7 +145,7 @@ class PictureEditController: UIViewController {
         panGes!.addTarget(self, action: #selector(swipeLeft(sender:)))
   
         self.imageView.isUserInteractionEnabled = true
-        self.imageView.addGestureRecognizer(panGes!)
+        self.view.addGestureRecognizer(panGes!)
         
         reloadPan = UIPanGestureRecognizer()
         reloadPan!.addTarget(self, action: #selector(panReload(sender:)))
@@ -226,7 +226,7 @@ class PictureEditController: UIViewController {
     
     @objc func panReload(sender:UIPanGestureRecognizer){
         if sender.state == .changed{
-            reloadBtn.center = sender.location(in: self.imageView)
+            reloadBtn.center = sender.location(in: self.view)
             if reloadBtn.center.x < reloadBtn.frame.width/2{
                 reloadBtn.center.x = reloadBtn.frame.width/2
             }
@@ -292,13 +292,23 @@ class PictureEditController: UIViewController {
         }
     }
     @objc func saveToBook(){
-        
+        let temp = savePicture()
+        UIImageWriteToSavedPhotosAlbum(temp, nil, nil, nil)
+        self.navigationController?.popViewController(animated: true)
         
     }
     
     @objc func saveToTable(){
         
         
+        savePicture()
+        self.navigationController?.popViewController(animated: true)
+            
+        
+        
+        
+    }
+    private func savePicture() -> UIImage{
         reloadBtn.isHidden = true
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         hud.show(animated: true)
@@ -306,15 +316,11 @@ class PictureEditController: UIViewController {
         
         
         let picture = DrawTool.drawIn(imageView: self.imageView)
-            
+        
         //hud.hide(animated: true)
         PictureProcessCore.shared.savePicture(image: picture)
         PictureProcessCore.shared.saveModel()
-        self.navigationController?.popViewController(animated: true)
-            
-        
-        
-        
+        return picture
     }
     
 }

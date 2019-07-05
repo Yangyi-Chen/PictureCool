@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import MBProgressHUD
 
 class AppriciateViewController: PictureEditController {
     
@@ -36,5 +37,14 @@ class AppriciateViewController: PictureEditController {
         let activity:UIActivityViewController = UIActivityViewController(activityItems: imageArr, applicationActivities: nil)
         self.navigationController?.present(activity, animated: true, completion: nil)
     
+    }
+    
+    override func saveToBook() {
+        UIImageWriteToSavedPhotosAlbum(nowImage!, nil, nil, nil)
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.mode = .text
+        hud.label.text = "保存成功"
+        hud.hide(animated: true, afterDelay: 1)
+        
     }
 }

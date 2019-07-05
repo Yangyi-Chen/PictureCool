@@ -14,7 +14,12 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
     var animationView:AnimationView!
     var tapGes:UITapGestureRecognizer!
     var tableView:MainTableView!
+    var socialTable:SocialTableView!
     
+    lazy var scrollView = { () -> UIScrollView in
+        let temp = BasicScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        return temp
+    }()
     lazy var camera = { () -> UIButton in
         let temp = UIButton()
         temp.setImage(ZImageMaker.bigCameraImage(), for: .normal)
@@ -46,14 +51,15 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
         addAnimationView()
         //addTitleBar()
         addTableView()
+        addScrollView()
         setAddButton()
         addTapGes()
         // Do any additional setup after loading the view.
     }
 
     private func addAnimationView(){
-        animationView = AnimationView(frame: self.view.frame)
-        self.view.addSubview(animationView)
+        animationView = AnimationView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        //self.view.addSubview(animationView)
     }
     
     private func addTitleBar(){
@@ -220,14 +226,23 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
     }
     
     private func addTableView(){
-        tableView = MainTableView(frame: self.view.frame, style: .grouped)
+        tableView = MainTableView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: .grouped)
         tableView.backgroundColor = nil
         tableView.push = { (make) in
             let vc = AppriciateViewController()
             vc.nowImage = make
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        self.view.addSubview(tableView)
+        //self.view.addSubview(tableView)
+        
+        socialTable = SocialTableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: .grouped)
+    }
+    
+    private func addScrollView(){
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(animationView)
+        scrollView.addSubview(tableView)
+        scrollView.addSubview(socialTable)
     }
 //    private func setCameraPhotoBtn(){
 //        let camera = UIButton()
