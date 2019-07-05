@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Kanna
+import Alamofire
 class lineBase{
     
     
@@ -30,9 +32,9 @@ class lineBase{
             let str = ((try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Dictionary<String, String>)["content"])!
             self.finalLines = str
             DispatchQueue.main.async {
-                 label.text = str
+                label.text = str
             }
-           
+            
             
             semaPhore.signal()
             
@@ -42,8 +44,42 @@ class lineBase{
         
     }
     
-    
+    func produceSentence(tag:String){
+        let wholeURL = "http://www.ichacha.net/mzj/"+tag+".html"
+        let verifiedURL = wholeURL.urlEncoded()
+        Alamofire.request(verifiedURL).responseData{(response) in
+            let WebPassage = String(data: response.data!, encoding: .utf8)
+            let doc = try! HTML(html: WebPassage!, encoding: .utf8)
+            var arr = Array<String>()
+            for ti in doc.css("li"){
+                arr.append(ti.text!)
+            }
+            //此时arr中 前五个元素是用tag造的句子
+            for i in 0...4{
+                print(arr[i])
+            }
+        }
+    }
     
     
     
 }
+
+
+
+
+extension String {
+    
+    //将原始的url编码为合法的url
+    func urlEncoded() -> String {
+        let encodeUrlString = self.addingPercentEncoding(withAllowedCharacters:
+            .urlQueryAllowed)
+        return encodeUrlString ?? ""
+    }
+    
+    //将编码后的url转换回原始的url
+    func urlDecoded() -> String {
+        return self.removingPercentEncoding ?? ""
+    }
+}
+
