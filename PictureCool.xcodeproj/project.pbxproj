@@ -34,6 +34,9 @@
 		367A9424C351D39E305B7DFA /* Pods_PictureCool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */; };
 		B534D30722CC31F1000FEFB3 /* PitureBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D30622CC31F1000FEFB3 /* PitureBase.swift */; };
 		B534D34B22CDF532000FEFB3 /* SaveCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D34A22CDF532000FEFB3 /* SaveCloud.swift */; };
+		B534D38922CF2D5C000FEFB3 /* loginCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D38822CF2D5C000FEFB3 /* loginCenter.swift */; };
+		B534D3CC22D04B41000FEFB3 /* VerifyPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3CB22D04B41000FEFB3 /* VerifyPicture.swift */; };
+		B534D3EC22D07F3D000FEFB3 /* DeleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D3EB22D07F3D000FEFB3 /* DeleteController.swift */; };
 		B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD022C7444500D4C635 /* Main.storyboard */; };
 		B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD322C7444700D4C635 /* Assets.xcassets */; };
 		B55A6ADF22C7446900D4C635 /* PictureCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6ADE22C7446800D4C635 /* PictureCore.swift */; };
@@ -74,6 +77,9 @@
 		AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureCool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B534D30622CC31F1000FEFB3 /* PitureBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitureBase.swift; sourceTree = "<group>"; };
 		B534D34A22CDF532000FEFB3 /* SaveCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveCloud.swift; sourceTree = "<group>"; };
+		B534D38822CF2D5C000FEFB3 /* loginCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginCenter.swift; sourceTree = "<group>"; };
+		B534D3CB22D04B41000FEFB3 /* VerifyPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPicture.swift; sourceTree = "<group>"; };
+		B534D3EB22D07F3D000FEFB3 /* DeleteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteController.swift; sourceTree = "<group>"; };
 		B55A6AC922C7444500D4C635 /* PictureCool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureCool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55A6AD122C7444500D4C635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B55A6AD322C7444700D4C635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -203,9 +209,12 @@
 			isa = PBXGroup;
 			children = (
 				B55A6ADE22C7446800D4C635 /* PictureCore.swift */,
+				B534D3CB22D04B41000FEFB3 /* VerifyPicture.swift */,
 				B534D30622CC31F1000FEFB3 /* PitureBase.swift */,
 				B55A84BD22CB4D4500D4C635 /* DetectPicture.swift */,
 				B534D34A22CDF532000FEFB3 /* SaveCloud.swift */,
+				B534D3EB22D07F3D000FEFB3 /* DeleteController.swift */,
+				B534D38822CF2D5C000FEFB3 /* loginCenter.swift */,
 				B55A776D22C9907600D4C635 /* linesBase.swift */,
 				B55A776522C898CD00D4C635 /* HMAC-SHA1.swift */,
 				B55A776B22C89E1800D4C635 /* GetInformation.swift */,
@@ -336,9 +345,10 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PictureCool/Pods-PictureCool-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PictureCool/Pods-PictureCool-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
@@ -348,12 +358,13 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESPullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PictureCool/Pods-PictureCool-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PictureCool/Pods-PictureCool-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -368,13 +379,16 @@
 				30A9F6CB22CD8B39007F5692 /* SocialTableView.swift in Sources */,
 				30A9F6C922CC3F3D007F5692 /* DrawTool.swift in Sources */,
 				30A9F6B022C9E579007F5692 /* AppDelegate.swift in Sources */,
+				B534D3CC22D04B41000FEFB3 /* VerifyPicture.swift in Sources */,
 				30A9F6B622C9EFBF007F5692 /* FakeNavigationView.swift in Sources */,
 				30A9F6A622C98E72007F5692 /* AnimationTool.swift in Sources */,
 				30A9F6A422C8ABA5007F5692 /* ZImageMaker.swift in Sources */,
 				30EDE1CF22D041E400620F6D /* RegisterView.swift in Sources */,
 				30031F9622C842A700955F27 /* ColorHelper.swift in Sources */,
+				B534D3EC22D07F3D000FEFB3 /* DeleteController.swift in Sources */,
 				30031F9222C8397200955F27 /* PhotoBookChooseView.swift in Sources */,
 				30A9F6D322CD99E8007F5692 /* SocialTableViewCell.swift in Sources */,
+				B534D38922CF2D5C000FEFB3 /* loginCenter.swift in Sources */,
 				30A9F6BD22C9FB0C007F5692 /* PictureEditController.swift in Sources */,
 				30A9F6CD22CD8C49007F5692 /* BasicScrollView.swift in Sources */,
 				30A9F6D622CDE49D007F5692 /* PersonalViewController.swift in Sources */,
@@ -559,7 +573,7 @@
 		};
 		B55A6ADD22C7444700D4C635 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6422F06C5D1D0E1E7396D4D4 /* Pods-PictureCool.release.xcconfig */;
+			baseConfigurationReference = 004BB5729D6542399E9AB3ED /* Pods-PictureCool.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -68,8 +68,10 @@ class saveCloud{
                     //TODO:  sss
                     imageArr.append(image!)
                     
+
                     sema.signal()
                     //count += 1
+
                 }
                 
                 
@@ -100,6 +102,9 @@ class saveCloud{
         ]
         return par
     }
+    
+    
+    
 
     
     

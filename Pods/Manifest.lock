@@ -1,12 +1,14 @@
 PODS:
   - Alamofire (4.8.2)
   - ESPullToRefresh (2.9)
+  - Kanna (5.0.0)
   - MBProgressHUD (1.1.0)
   - SnapKit (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - ESPullToRefresh
+  - Kanna
   - MBProgressHUD (~> 1.1.0)
   - SnapKit
 
@@ -14,6 +16,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - ESPullToRefresh
+    - Kanna
     - MBProgressHUD
     - SnapKit
 
@@ -24,5 +27,10 @@ SPEC CHECKSUMS:
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
 PODFILE CHECKSUM: 86d0fbd06918f695827ba1f4f51c10bc67681ee7
+  Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
-COCOAPODS: 1.5.3
+PODFILE CHECKSUM: 0a1db2ee31eadd805b407d5fc504097d3fc378c3
+
+COCOAPODS: 1.6.1
