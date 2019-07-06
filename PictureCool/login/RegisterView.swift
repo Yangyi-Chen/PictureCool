@@ -14,6 +14,10 @@ class RegisterView:UIView{
     @IBOutlet weak var headImage: UIImageView!
     
     @IBOutlet weak var userName: UITextField!
+    
+    typealias goValue = ()->()
+    var go:goValue?
+    var pick:goValue?
 
     @IBOutlet weak var passWord: UITextField!
     @IBOutlet weak var registerBtn: UIButton!
@@ -24,13 +28,28 @@ class RegisterView:UIView{
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        initFromXib()
+        //initFromXib()
     }
     func initFromXib() {
-        let bundle = Bundle.init(for: FakeNavigationView.self)
-        let nib = UINib(nibName: "FakeNavigationView", bundle: bundle)
+        let bundle = Bundle.init(for: RegisterView.self)
+        let nib = UINib(nibName: "RegisterView", bundle: bundle)
         contView = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         contView.frame = bounds
         self.addSubview(contView)
+        goLogin.addTarget(self, action: #selector(gotoLogin), for: .touchUpInside)
+       headImage.backgroundColor = UIColor.white
+        headImage.isUserInteractionEnabled = true
+        let tapGes = UITapGestureRecognizer()
+        tapGes.addTarget(self, action: #selector(tapHead))
+        headImage.addGestureRecognizer(tapGes)
+        
+    }
+    
+    @objc func gotoLogin(){
+        go!()
+    }
+    @objc func tapHead(){
+        pick!()
+        print("pick")
     }
 }

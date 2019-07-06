@@ -26,13 +26,14 @@
 		30A9F6CF22CD95DA007F5692 /* FakeSocialNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6CE22CD95DA007F5692 /* FakeSocialNavView.swift */; };
 		30A9F6D122CD9601007F5692 /* FakeSocialNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A9F6D022CD9601007F5692 /* FakeSocialNavView.xib */; };
 		30A9F6D322CD99E8007F5692 /* SocialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6D222CD99E8007F5692 /* SocialTableViewCell.swift */; };
-		30A9F6D622CDE49D007F5692 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6D522CDE49C007F5692 /* LoginViewController.swift */; };
-		30A9F6D822CDEB8E007F5692 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A9F6D722CDEB8E007F5692 /* RegisterView.xib */; };
-		30A9F6DA22CDF062007F5692 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A9F6D922CDF062007F5692 /* LoginView.xib */; };
-		30A9F6DC22CDF2DC007F5692 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6DB22CDF2DC007F5692 /* RegisterView.swift */; };
-		30A9F6DE22CDF2F3007F5692 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6DD22CDF2F3007F5692 /* LoginView.swift */; };
+		30A9F6D622CDE49D007F5692 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A9F6D522CDE49C007F5692 /* PersonalViewController.swift */; };
+		30EDE1CF22D041E400620F6D /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EDE1CB22D041E300620F6D /* RegisterView.swift */; };
+		30EDE1D022D041E400620F6D /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30EDE1CC22D041E300620F6D /* RegisterView.xib */; };
+		30EDE1D122D041E400620F6D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EDE1CD22D041E300620F6D /* LoginView.swift */; };
+		30F7B50922D0571D00BDC6AF /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F7B50822D0571D00BDC6AF /* LoginView.xib */; };
 		367A9424C351D39E305B7DFA /* Pods_PictureCool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */; };
 		B534D30722CC31F1000FEFB3 /* PitureBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D30622CC31F1000FEFB3 /* PitureBase.swift */; };
+		B534D34B22CDF532000FEFB3 /* SaveCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D34A22CDF532000FEFB3 /* SaveCloud.swift */; };
 		B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD022C7444500D4C635 /* Main.storyboard */; };
 		B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55A6AD322C7444700D4C635 /* Assets.xcassets */; };
 		B55A6ADF22C7446900D4C635 /* PictureCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A6ADE22C7446800D4C635 /* PictureCore.swift */; };
@@ -63,15 +64,16 @@
 		30A9F6CE22CD95DA007F5692 /* FakeSocialNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSocialNavView.swift; sourceTree = "<group>"; };
 		30A9F6D022CD9601007F5692 /* FakeSocialNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FakeSocialNavView.xib; sourceTree = "<group>"; };
 		30A9F6D222CD99E8007F5692 /* SocialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialTableViewCell.swift; sourceTree = "<group>"; };
-		30A9F6D522CDE49C007F5692 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		30A9F6D722CDEB8E007F5692 /* RegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
-		30A9F6D922CDF062007F5692 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
-		30A9F6DB22CDF2DC007F5692 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		30A9F6DD22CDF2F3007F5692 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		30A9F6D522CDE49C007F5692 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		30EDE1CB22D041E300620F6D /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		30EDE1CC22D041E300620F6D /* RegisterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
+		30EDE1CD22D041E300620F6D /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		30F7B50822D0571D00BDC6AF /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		60E82D0274828238DAC987BA /* Pods-PictureCool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureCool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureCool/Pods-PictureCool.debug.xcconfig"; sourceTree = "<group>"; };
 		6422F06C5D1D0E1E7396D4D4 /* Pods-PictureCool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureCool.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureCool/Pods-PictureCool.release.xcconfig"; sourceTree = "<group>"; };
 		AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureCool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B534D30622CC31F1000FEFB3 /* PitureBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitureBase.swift; sourceTree = "<group>"; };
+		B534D34A22CDF532000FEFB3 /* SaveCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveCloud.swift; sourceTree = "<group>"; };
 		B55A6AC922C7444500D4C635 /* PictureCool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureCool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55A6AD122C7444500D4C635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B55A6AD322C7444700D4C635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,11 +144,11 @@
 		30A9F6D422CDE47D007F5692 /* login */ = {
 			isa = PBXGroup;
 			children = (
-				30A9F6D522CDE49C007F5692 /* LoginViewController.swift */,
-				30A9F6DB22CDF2DC007F5692 /* RegisterView.swift */,
-				30A9F6D722CDEB8E007F5692 /* RegisterView.xib */,
-				30A9F6DD22CDF2F3007F5692 /* LoginView.swift */,
-				30A9F6D922CDF062007F5692 /* LoginView.xib */,
+				30A9F6D522CDE49C007F5692 /* PersonalViewController.swift */,
+				30EDE1CD22D041E300620F6D /* LoginView.swift */,
+				30EDE1CB22D041E300620F6D /* RegisterView.swift */,
+				30EDE1CC22D041E300620F6D /* RegisterView.xib */,
+				30F7B50822D0571D00BDC6AF /* LoginView.xib */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -203,6 +205,7 @@
 				B55A6ADE22C7446800D4C635 /* PictureCore.swift */,
 				B534D30622CC31F1000FEFB3 /* PitureBase.swift */,
 				B55A84BD22CB4D4500D4C635 /* DetectPicture.swift */,
+				B534D34A22CDF532000FEFB3 /* SaveCloud.swift */,
 				B55A776D22C9907600D4C635 /* linesBase.swift */,
 				B55A776522C898CD00D4C635 /* HMAC-SHA1.swift */,
 				B55A776B22C89E1800D4C635 /* GetInformation.swift */,
@@ -292,10 +295,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				30A9F6D122CD9601007F5692 /* FakeSocialNavView.xib in Resources */,
+				30EDE1D022D041E400620F6D /* RegisterView.xib in Resources */,
+				30F7B50922D0571D00BDC6AF /* LoginView.xib in Resources */,
 				B55A6AD422C7444700D4C635 /* Assets.xcassets in Resources */,
-				30A9F6DA22CDF062007F5692 /* LoginView.xib in Resources */,
 				30A9F6B822C9EFC8007F5692 /* FakeNavigationView.xib in Resources */,
-				30A9F6D822CDEB8E007F5692 /* RegisterView.xib in Resources */,
 				B55A6AD222C7444500D4C635 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +338,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PictureCool/Pods-PictureCool-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
@@ -343,6 +347,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -366,20 +371,21 @@
 				30A9F6B622C9EFBF007F5692 /* FakeNavigationView.swift in Sources */,
 				30A9F6A622C98E72007F5692 /* AnimationTool.swift in Sources */,
 				30A9F6A422C8ABA5007F5692 /* ZImageMaker.swift in Sources */,
+				30EDE1CF22D041E400620F6D /* RegisterView.swift in Sources */,
 				30031F9622C842A700955F27 /* ColorHelper.swift in Sources */,
 				30031F9222C8397200955F27 /* PhotoBookChooseView.swift in Sources */,
 				30A9F6D322CD99E8007F5692 /* SocialTableViewCell.swift in Sources */,
 				30A9F6BD22C9FB0C007F5692 /* PictureEditController.swift in Sources */,
 				30A9F6CD22CD8C49007F5692 /* BasicScrollView.swift in Sources */,
-				30A9F6D622CDE49D007F5692 /* LoginViewController.swift in Sources */,
+				30A9F6D622CDE49D007F5692 /* PersonalViewController.swift in Sources */,
 				B55A776422C8909F00D4C635 /* SaveCore.swift in Sources */,
-				30A9F6DC22CDF2DC007F5692 /* RegisterView.swift in Sources */,
 				B55A776622C898CD00D4C635 /* HMAC-SHA1.swift in Sources */,
+				30EDE1D122D041E400620F6D /* LoginView.swift in Sources */,
 				B55A776C22C89E1800D4C635 /* GetInformation.swift in Sources */,
 				B55A84BE22CB4D4500D4C635 /* DetectPicture.swift in Sources */,
 				B534D30722CC31F1000FEFB3 /* PitureBase.swift in Sources */,
 				30A9F6C522CB53BA007F5692 /* MainTableViewCell.swift in Sources */,
-				30A9F6DE22CDF2F3007F5692 /* LoginView.swift in Sources */,
+				B534D34B22CDF532000FEFB3 /* SaveCloud.swift in Sources */,
 				30A9F6B422C9EFB6007F5692 /* AnimationView.swift in Sources */,
 				B55A776E22C9907600D4C635 /* linesBase.swift in Sources */,
 				30A9F6C322CB526D007F5692 /* AppriciateViewController.swift in Sources */,
@@ -532,16 +538,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WDYZFJ25J7;
 				INFOPLIST_FILE = PictureCool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zeng.PictureCool;
+				PRODUCT_BUNDLE_IDENTIFIER = lighayes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PictureCool/CoreModel/PictureCool-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -555,16 +563,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WDYZFJ25J7;
 				INFOPLIST_FILE = PictureCool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zeng.PictureCool;
+				PRODUCT_BUNDLE_IDENTIFIER = lighayes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PictureCool/CoreModel/PictureCool-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

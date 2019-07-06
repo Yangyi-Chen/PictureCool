@@ -185,10 +185,8 @@ class PictureEditController: UIViewController {
         
                 //self.getPictureToPoem()
         let queue = DispatchQueue(label: "requestHandler")
-        //分组
         let group = DispatchGroup()
         weak var weakSelf =  self
-        //第一个网络请求，查询群信息
         let sema = DispatchSemaphore(value: 0)
         queue.async(group: group) {
             

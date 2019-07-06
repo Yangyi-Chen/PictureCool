@@ -14,6 +14,12 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
     typealias pushValue = (UIImage)->()
     var push:pushValue?
     
+    typealias refreshValue = ()->()
+    var refresh:refreshValue?
+    
+    typealias goValue = ()->()
+    var gotoLoginC:goValue?
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allPicture!.count
     }
@@ -56,6 +62,11 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
         }
         let pushAction = UITableViewRowAction.init(style: .normal, title: "push") { (row, indexPath) in
             
+            self.gotoLoginC!()
+            saveCloud.shared.sharePicture(image: self.allPicture![indexPath.row],handler:{
+                self.refresh!()
+            })
+           
         }
         return [delete,pushAction]
     }

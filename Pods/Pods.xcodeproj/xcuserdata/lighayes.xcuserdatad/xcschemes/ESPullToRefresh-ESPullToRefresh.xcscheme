@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7894DEA2C6C0E5A99E75B81F0536091E"
-               BuildableName = "Pods_PictureCool.framework"
-               BlueprintName = "Pods-PictureCool"
+               BlueprintIdentifier = "51DEA0F84EE4B88E5E733FD600D0D94B"
+               BuildableName = "ESPullToRefresh.bundle"
+               BlueprintName = "ESPullToRefresh-ESPullToRefresh"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7894DEA2C6C0E5A99E75B81F0536091E"
-            BuildableName = "Pods_PictureCool.framework"
-            BlueprintName = "Pods-PictureCool"
+            BlueprintIdentifier = "51DEA0F84EE4B88E5E733FD600D0D94B"
+            BuildableName = "ESPullToRefresh.bundle"
+            BlueprintName = "ESPullToRefresh-ESPullToRefresh"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -233,9 +233,24 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
             vc.nowImage = make
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        tableView.refresh = {
+            self.socialTable.refreshData()
+            
+            self.socialTable.reloadData()
+        }
+        tableView.gotoLoginC = {
+            self.gotoLoginViewController()
+        }
+        
         //self.view.addSubview(tableView)
         
         socialTable = SocialTableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: .grouped)
+        
+    }
+    
+    func gotoLoginViewController(){
+        let vc = PersonalViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func addScrollView(){
@@ -243,6 +258,7 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
         scrollView.addSubview(animationView)
         scrollView.addSubview(tableView)
         scrollView.addSubview(socialTable)
+        
     }
 //    private func setCameraPhotoBtn(){
 //        let camera = UIButton()

@@ -13,6 +13,9 @@ class FakeSocialNavView:UIView{
     @IBOutlet weak var cLabel: UILabel!
     @IBOutlet weak var chineseLabel: UILabel!
     var tapGes:UITapGestureRecognizer!
+    
+    typealias goValue = () -> ()
+    var go:goValue?
     override init(frame: CGRect) {
         super.init(frame: frame)
         initFromXib()
@@ -36,6 +39,6 @@ class FakeSocialNavView:UIView{
 //        }
     }
     @objc func gotoPersonalMain(){
-        
+        //go!()
     }
 }
