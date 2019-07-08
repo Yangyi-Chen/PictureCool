@@ -48,13 +48,24 @@ class loginCenter{
     //获取用户图像
     func gettheUserPicture(userID:String){
         Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/get_avatar_url.php", method: .post, parameters: constructgetPictureParameters(userID: userID), encoding: URLEncoding.default, headers: constructHead()).responseData{(response) in
-            let image = UIImage(data: response.data!)
-            //TODO: dosomething with image
+            let jsonDic = try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! NSDictionary
+            let Strurl = jsonDic["url"] as! String
+            let url = URL(string: Strurl)
+            //url是图像URL
+            //用法：
+            /*
+            Alamofire.request(url!).responseData{(response) in
+                let image = UIImage(data: response.data!)
+            }
+ */
+ 
+ 
+            
             
             
             
         }
-    
+        
     }
     
     //通过用户的账号，获取用户密码，实现在本地不需要每次打开都登录
@@ -110,7 +121,7 @@ extension loginCenter{
     private func constructgetPictureParameters(userID:String)->Parameters{
         var par = Parameters()
         par = [
-            "用户名":userID
+            "name":userID
         ]
         return par
     }

@@ -13,9 +13,9 @@ class saveCloud{
     
     
     
-    func sharePicture(image:UIImage){
+    func sharePicture(image:UIImage,userID:String,userPass:String){
         Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/upload_base64.php", method: .post
-            , parameters: constructBody(), encoding: URLEncoding.default, headers: constructHead()).responseString{(response) in
+            , parameters: constructBody(userID: userID, userPass: userPass, image: image), encoding: URLEncoding.default, headers: constructHead()).responseString{(response) in
                 print(response)
         }
     }
@@ -39,17 +39,37 @@ class saveCloud{
         }
     }
     
+    
+    func getUniqueUserPicture(userID:String){
+        Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/list_name.php", method: .post, parameters: constructUniqueUserPar(userID: userID), encoding: URLEncoding.default, headers: constructHead()).responseData{(response) in
+            let arr = try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! NSArray
+            //TODO: dosomething with arr
+            
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    
     private func constructHead()->HTTPHeaders{
         var head = HTTPHeaders()
         head = ["content-type":"application/x-www-form-urlencoded"]
         return head
     }
-    private func constructBody()->Parameters{
+    
+    
+    
+    private func constructBody(userID:String,userPass:String,image:UIImage)->Parameters{
         var par = Parameters()
-        let image = UIImage(named: "dong")
-        let data = image?.jpegData(compressionQuality: 1)
+        let data = image.jpegData(compressionQuality: 1)
         let base64 = data?.base64EncodedString()
         par = [
+            "name":userID,
+            "pass":userPass,
             "type":"jpg",
             "data":base64!
         ]
@@ -58,7 +78,14 @@ class saveCloud{
     
     
     
-
+    private func constructUniqueUserPar(userID:String)->Parameters{
+        var par = Parameters()
+        par = [
+            "name":userID
+        ]
+        
+        return par
+    }
     
     
     
