@@ -18,7 +18,7 @@ class PictureEditController: UIViewController {
     var beganPanPoint:CGPoint?
     var detectcore:detectCore?
     var tag:String?
-    
+    var sentences:[String] = []
     
     
     
@@ -32,6 +32,7 @@ class PictureEditController: UIViewController {
         temp.adjustsFontSizeToFitWidth = true
         //temp.sizeToFit()
         temp.textColor = UIColor.rose
+        temp.textAlignment = .center
         return temp
     }()
     lazy var reloadBtn = { () -> UIButton in
@@ -47,7 +48,11 @@ class PictureEditController: UIViewController {
     }()
     
     @objc private func refresh(){
+        if sentences.count == 0{
         PictureProcessCore.shared.getTheLines(tag: (detectcore?.getTheMainElement())!, label: pLabel)
+        }else{
+            pLabel.text = sentences[Int(arc4random() % 4)]
+        }
     }
     
     
@@ -165,8 +170,15 @@ class PictureEditController: UIViewController {
         //pLabel.center = imageView.center
         
         tag = detectcore?.getTheMainElement()
-        let tempText = PictureProcessCore.shared.getTheLines(tag: (tag)!, label: pLabel)
-        pLabel.text = tempText
+        var tempText = PictureProcessCore.shared.getTheLines(tag: (tag)!, label: pLabel)
+        if tempText == "none" {
+            lineBase.shared.produceSentence(tag: tag!, handler: { (make) in
+                self.sentences = make
+                tempText = make[Int(arc4random() % 4)]
+                self.pLabel.text = tempText
+            })
+        }
+        
         
     }
     

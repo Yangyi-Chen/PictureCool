@@ -72,9 +72,16 @@ class PictureProcessCore{
     //获取诗词 随机一句
     func getTheLines(tag:String,label:UILabel)->String{
         let newTag = picturebase?.match(matchString: tag)
+        var isNIL = false
         linesbase!.tag = newTag
-        linesbase?.getlines(label: label)
+        linesbase?.getlines(label: label, ifFail:{
+            isNIL = true
+        })
+        if isNIL {
+            return "none"
+        }else{
         return linesbase!.finalLines!
+        }
     }
     
     

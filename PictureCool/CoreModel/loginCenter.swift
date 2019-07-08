@@ -10,6 +10,11 @@ import Foundation
 import Alamofire
 class loginCenter{
     
+    
+    private static var instance = loginCenter()
+    
+    class var shared:loginCenter {return instance}
+    
     func register(userID:String,userPass:String){
         Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/register.php", method: .post, parameters: constructParameters(userID: userID, userPass: userPass), encoding: URLEncoding.default, headers: constructHead())
     }

@@ -13,13 +13,17 @@ import Alamofire
 class lineBase{
     
     
+    private static var instance = lineBase()
     
+    class var shared:lineBase {return instance}
     
     var tag:String?
     var finalLines:String?
     
     
-    func getlines(label:UILabel){
+    func getlines(label:UILabel,ifFail:@escaping ()->()){
+        
+        
         
         let url = URL(string: "https://api.gushi.ci/" + tag!)
         let request = URLRequest(url: url!)
@@ -27,12 +31,19 @@ class lineBase{
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
+                
                 return
             }
-            let str = ((try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Dictionary<String, String>)["content"])!
-            self.finalLines = str
+            let jsonobject = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+            let returnDic = jsonobject as! NSDictionary
+            let str = returnDic["content"]
+            if str != nil{
+                self.finalLines = str as! String
             DispatchQueue.main.async {
-                label.text = str
+                label.text = str as! String
+            }
+            }else{
+                ifFail()
             }
             
             
@@ -44,7 +55,7 @@ class lineBase{
         
     }
     
-    func produceSentence(tag:String){
+    func produceSentence(tag:String,handler:@escaping ([String])->()){
         let wholeURL = "http://www.ichacha.net/mzj/"+tag+".html"
         let verifiedURL = wholeURL.urlEncoded()
         Alamofire.request(verifiedURL).responseData{(response) in
@@ -58,6 +69,7 @@ class lineBase{
             for i in 0...4{
                 print(arr[i])
             }
+            handler(arr)
         }
     }
     

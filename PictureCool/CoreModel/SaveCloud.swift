@@ -78,7 +78,7 @@ class saveCloud{
                 sema.wait()
             }
         }
-        group.notify(queue: DispatchQueue.main, execute: {[weak self] in
+        group.notify(queue: DispatchQueue.main, execute: { 
             //tableView同时用到了两个请求到返回结果
             
             //hud.hide(animated: true)

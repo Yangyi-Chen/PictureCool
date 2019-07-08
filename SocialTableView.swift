@@ -8,6 +8,7 @@
 
 import UIKit
 import ESPullToRefresh
+import MJRefresh
 
 class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITableViewDelegate{
     var ePicture:[UIImage] = []
@@ -15,6 +16,9 @@ class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITable
     var push:pushValue?
     var nowArr:[String] = []
     var nowIndex = 0
+    
+    var zHeader = MJRefreshNormalHeader()
+    var zFooter = MJRefreshAutoNormalFooter()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ePicture.count
@@ -54,9 +58,9 @@ class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITable
     }
     
     func refreshData(){
-        ePicture = []
+        
         saveCloud.shared.getAllpicture(hurdler: { (arr) in
-            self.nowArr = arr
+            self.nowArr = arr.reversed()
             var tempArr:[String] = []
             if self.nowArr.count <= 4 {
                 tempArr = self.nowArr
@@ -69,8 +73,11 @@ class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITable
                 self.nowIndex = 4
             }
             saveCloud.shared.getAllTruePicture(arr: tempArr, handler: {(imageArr) in
+                self.mj_header.endRefreshing()
+                self.ePicture = []
                 self.ePicture = imageArr
                 self.reloadData()
+                
             })
             
              print("nowArr.count = \(self.nowArr.count)")
@@ -80,30 +87,62 @@ class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITable
     }
     
     func setPullRefresh(){
-        self.es.addPullToRefresh {
-            self.refreshData()
-            self.es.stopPullToRefresh()
-        }
-        self.es.addInfiniteScrolling {
-            var tempArr:[String] = []
-            for i in 0...3 {
-                if self.nowIndex != self.nowArr.count{
+//        self.es.addPullToRefresh {
+//            self.refreshData()
+//
+//        }
+//        self.es.addInfiniteScrolling {
+//            var tempArr:[String] = []
+//            for i in 0...3 {
+//                if self.nowIndex != self.nowArr.count{
+//                tempArr.append(self.nowArr[self.nowIndex])
+//                    self.nowIndex = self.nowIndex+1
+//                }else{
+//                    //self.nowIndex =
+//                    break
+//                }
+//            }
+//            saveCloud.shared.getAllTruePicture(arr: tempArr, handler: {(imageArr) in
+//                for i in imageArr {
+//                    self.ePicture.append(i)
+//                }
+//                self.reloadData()
+//            })
+//            self.es.stopLoadingMore()
+//            if self.nowIndex == self.nowArr.count {self.es.noticeNoMoreData()}
+//        }
+        zHeader.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
+        self.mj_header = zHeader
+        
+        zFooter.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
+        self.mj_footer = zFooter
+        self.zHeader.beginRefreshing()
+    }
+    
+    @objc func headerRefresh(){
+        self.refreshData()
+    }
+    
+    @objc func footerRefresh(){
+        var tempArr:[String] = []
+        for i in 0...3 {
+            if self.nowIndex != self.nowArr.count{
                 tempArr.append(self.nowArr[self.nowIndex])
-                    self.nowIndex = self.nowIndex+1
-                }else{
-                    //self.nowIndex =
-                    break
-                }
+                self.nowIndex = self.nowIndex+1
+            }else{
+                //self.nowIndex =
+                break
             }
-            saveCloud.shared.getAllTruePicture(arr: tempArr, handler: {(imageArr) in
-                for i in imageArr {
-                    self.ePicture.append(i)
-                }
-                self.reloadData()
-            })
-            self.es.stopLoadingMore()
-            if self.nowIndex == self.nowArr.count {self.es.noticeNoMoreData()}
         }
+        saveCloud.shared.getAllTruePicture(arr: tempArr, handler: {(imageArr) in
+            for i in imageArr {
+                self.ePicture.append(i)
+            }
+            self.reloadData()
+            self.mj_footer.endRefreshing()
+            if self.nowIndex == self.nowArr.count {self.mj_footer.endRefreshingWithNoMoreData()}
+        })
+        
     }
 
     
@@ -112,7 +151,7 @@ class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITable
         super.init(frame: frame, style: style)
         self.register(SocialTableViewCell.self, forCellReuseIdentifier: "SocialTableViewCell")
         self.backgroundColor = UIColor.tintDark
-        self.refreshData()
+        //self.refreshData()
         self.setPullRefresh()
         self.delegate = self
         self.dataSource = self
