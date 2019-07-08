@@ -16,6 +16,12 @@ class PictureProcessCore{
     let linesbase:lineBase?
     var picturebase:PictureBase?
 
+    
+    var status = 0
+    var userID:String?
+    
+    
+    
 
     private static var instance = PictureProcessCore()
     
@@ -93,7 +99,22 @@ class PictureProcessCore{
         let fileurl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("totalNumber")
         let data = String(theTotalNumberofPicture!).data(using: .utf8)
         try! data!.write(to: fileurl)
+        
+        let statusurl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask,appropriateFor:nil,create:true).appendingPathComponent("status")
+        let statusdata = String(status).data(using: .utf8)
+        try! statusdata?.write(to: statusurl)
+        
+        let userIDurl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("userID")
+        if userID != nil{
+            let userIDData = userID?.data(using: .utf8)
+            try! userIDData!.write(to: userIDurl)
+        }
+        
     }
+    
+    
+    
+    
     
     private func gettheNumber(){
         let fileurl = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("totalNumber")
