@@ -64,11 +64,13 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
                 PictureProcessCore.shared.saveModel()
         }
         let pushAction = UITableViewRowAction.init(style: .normal, title: "push") { (row, indexPath) in
-            
+            if PictureProcessCore.shared.status == 0{
             self.gotoLoginC!()
+            }else{
             saveCloud.shared.sharePicture(image: self.allPicture![indexPath.row],handler:{
                 self.refresh!()
             })
+            }
            
         }
         return [delete,pushAction]

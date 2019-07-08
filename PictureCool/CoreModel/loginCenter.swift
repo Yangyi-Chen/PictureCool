@@ -41,12 +41,12 @@ class loginCenter{
     
     
     //获取用户图像
-    func gettheUserPicture(userID:String){
+    func gettheUserPicture(userID:String,handler:@escaping (UIImage)->()){
         Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/get_avatar_url.php", method: .post, parameters: constructgetPictureParameters(userID: userID), encoding: URLEncoding.default, headers: constructHead()).responseData{(response) in
             let image = UIImage(data: response.data!)
             //TODO: dosomething with image
             
-            
+            handler(image!)
             
         }
     

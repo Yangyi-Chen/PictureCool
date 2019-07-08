@@ -82,6 +82,9 @@ class LoginView: UIView,UITextFieldDelegate {
                 if status == 1{
                     hud.label.text = "登陆成功"
                     hud.hide(animated: true, afterDelay: 0.5)
+                    PictureProcessCore.shared.status = 1
+                    PictureProcessCore.shared.userID = self.userName.text!
+                    PictureProcessCore.shared.saveModel()
                     self.pop!()
                 }else{
                     hud.label.text = "用户名或密码错误"

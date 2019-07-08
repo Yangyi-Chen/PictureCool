@@ -73,7 +73,25 @@ class PictureProcessCore{
         theTotalNumberofPicture = theTotalNumberofPicture! - 1
     }
     
-    
+    func getUserIDandStatus(){
+        let userURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("userID")
+        if FileManager.default.fileExists(atPath: userURL.path){
+        let data = try! Data(contentsOf: userURL)
+        userID = String(data: data, encoding: .utf8)
+        }
+        
+        let statusurl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask,appropriateFor:nil,create:false).appendingPathComponent("status")
+        
+        if FileManager.default.fileExists(atPath: statusurl.path){
+        
+        
+        let data2 = try! Data(contentsOf: statusurl)
+        let str = String(data: data2, encoding: .utf8)
+        status = Int(str!)!
+        }
+        
+        
+    }
 
     //获取诗词 随机一句
     func getTheLines(tag:String,label:UILabel)->String{
@@ -134,8 +152,10 @@ class PictureProcessCore{
     
     init(){
 
+        
         linesbase = lineBase()
         gettheNumber()
+        getUserIDandStatus()
         picturebase = PictureBase()
     }
     
