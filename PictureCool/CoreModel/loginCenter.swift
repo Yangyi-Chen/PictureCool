@@ -11,7 +11,14 @@ import Alamofire
 class loginCenter{
     
     func register(userID:String,userPass:String){
-        Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/register.php", method: .post, parameters: constructParameters(userID: userID, userPass: userPass), encoding: URLEncoding.default, headers: constructHead())
+        Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/register.php", method: .post, parameters: constructParameters(userID: userID, userPass: userPass), encoding: URLEncoding.default, headers: constructHead()).responseData{(response) in
+            let status = (try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! Dictionary<String,Any>)["stat"] as!  Int
+            if status == 1{
+                //h注册成功
+            }else{
+                //注册失败
+            }
+        }
     }
     
     
@@ -46,6 +53,18 @@ class loginCenter{
         }
     
     }
+    
+    //通过用户的账号，获取用户密码，实现在本地不需要每次打开都登录
+    func getthePassword(userID:String){
+        Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/get_password.php", method: .post, parameters: constructgetUserPasswordParameters(userID: userID), encoding: URLEncoding.default, headers: constructHead()).responseData(completionHandler: {(response)  in
+            let password = (try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! NSDictionary)["pass"] as! String
+            //TODO:  do something with  the password
+            
+            
+        })
+    }
+    
+    
     
     
     
@@ -91,7 +110,14 @@ extension loginCenter{
         return par
     }
     
-    
+    private func constructgetUserPasswordParameters(userID:String)->Parameters{
+        var par = Parameters()
+        par = [
+            "name":userID
+        ]
+        
+        return par
+    }
     
     
     
