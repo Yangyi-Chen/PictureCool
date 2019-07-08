@@ -29,6 +29,30 @@ class loginCenter{
     
     
     
+    //注册的时候，更改头像时候，都调用这个函数
+    func postTheUserPicture(userID:String,userPass:String,userPicture:UIImage){
+        Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/change_avatar.php", method: .post, parameters: constructPictureParameters(userID: userID, userPass: userPass, userPicture: userPicture), encoding: URLEncoding.default, headers: constructHead())
+    }
+    
+    
+    //获取用户图像
+    func gettheUserPicture(userID:String){
+        Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/get_avatar_url.php", method: .post, parameters: constructgetPictureParameters(userID: userID), encoding: URLEncoding.default, headers: constructHead()).responseData{(response) in
+            let image = UIImage(data: response.data!)
+            //TODO: dosomething with image
+            
+            
+            
+        }
+    
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 extension loginCenter{
     
@@ -46,5 +70,29 @@ extension loginCenter{
         head =  ["content-type":"application/x-www-form-urlencoded"]
         return head
     }
+    
+    private func constructPictureParameters(userID:String,userPass:String,userPicture:UIImage)->Parameters{
+        var par = Parameters()
+        let fileData = userPicture.jpegData(compressionQuality: 1)
+        let base64 = fileData!.base64EncodedString(options: .endLineWithLineFeed)
+        par = [
+            "name":userID,
+            "pass":userPass,
+            "data":base64
+        ]
+        return par
+    }
+    
+    private func constructgetPictureParameters(userID:String)->Parameters{
+        var par = Parameters()
+        par = [
+            "name":userID
+        ]
+        return par
+    }
+    
+    
+    
+    
     
 }
