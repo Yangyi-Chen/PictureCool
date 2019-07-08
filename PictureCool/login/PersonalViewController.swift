@@ -25,6 +25,9 @@ class PersonalViewController: UIViewController,UINavigationControllerDelegate,UI
     override func viewDidLoad() {
         let login = LoginView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         login.awakeFromNib()
+        login.pop = {
+            self.navigationController?.popViewController(animated: true)
+        }
         self.view.addSubview(register)
         self.view.addSubview(login)
         register.go = {

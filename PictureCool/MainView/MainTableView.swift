@@ -37,6 +37,9 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let nib = FakeNavigationView()
         nib.awakeFromNib()
+        nib.go = {
+            self.gotoLoginC!()
+        }
         return nib
     }
     

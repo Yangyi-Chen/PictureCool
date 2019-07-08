@@ -12,6 +12,10 @@ class FakeNavigationView: UIView {
     @IBOutlet weak var titleMain: UILabel!
     @IBOutlet weak var titleNext: UILabel!
     @IBOutlet var contView: UIView!
+    @IBOutlet weak var userBtn: UIButton!
+    
+    typealias goValue = () -> ()
+    var go:goValue?
     
     
     override init(frame: CGRect) {
@@ -29,6 +33,15 @@ class FakeNavigationView: UIView {
         contView = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         contView.frame = bounds
         self.addSubview(contView)
+        userBtn.addTarget(self, action: #selector(tapToLogin), for: .touchUpInside)
+        userBtn.layer.cornerRadius = 20
+        userBtn.clipsToBounds = true
+        userBtn.tintColor = nil
+        userBtn.setImage(ZImageMaker.makeUserImage(), for: .normal)
+    }
+    
+    @objc func tapToLogin(){
+        go!()
     }
     private func addTitle(){
 //        let title = UILabel(frame: CGRect(x: 0, y: 50, width: 100, height: 50))

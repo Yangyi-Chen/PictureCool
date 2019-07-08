@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class LoginView: UIView {
+class LoginView: UIView,UITextFieldDelegate {
     @IBOutlet var contView: UIView!
 
     
@@ -18,6 +19,9 @@ class LoginView: UIView {
     @IBOutlet weak var userName: UITextField!
     
     @IBOutlet weak var goRegister: UIButton!
+    
+    typealias popValue = ()->()
+    var pop:popValue?
 //    lazy var passWord:UITextField = { ()->UITextField in
 //        let temp = UITextField()
 //        temp.frame.size.width = 300
@@ -62,9 +66,36 @@ class LoginView: UIView {
         contView.frame = bounds
         self.addSubview(contView)
         goRegister.addTarget(self, action: #selector(gotoRegister), for: .touchUpInside)
+        userName.delegate = self
+        passWord.delegate = self
+        
+        loginbtn.addTarget(self, action: #selector(login), for: .touchUpInside)
+    }
+    
+    @objc func login(){
+        let hud = MBProgressHUD.showAdded(to: self, animated: true)
+        if userName.text == "" || passWord.text == "" {
+            hud.label.text = "用户名或密码不能为空"
+            hud.hide(animated: true, afterDelay: 0.5)
+        }else{
+            loginCenter.shared.login(userID: userName.text!, userPass: passWord.text!,handler:{ (status) in 
+                if status == 1{
+                    hud.label.text = "登陆成功"
+                    hud.hide(animated: true, afterDelay: 0.5)
+                    self.pop!()
+                }else{
+                    hud.label.text = "用户名或密码错误"
+                    hud.hide(animated: true, afterDelay: 0.5)
+                }
+            })
+        }
     }
     
     @objc func gotoRegister(){
         go!()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
     }
 }

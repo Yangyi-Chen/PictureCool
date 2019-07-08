@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class RegisterView:UIView{
+class RegisterView:UIView,UITextFieldDelegate{
     @IBOutlet var contView: UIView!
     @IBOutlet weak var goLogin: UIButton!
     @IBOutlet weak var headImage: UIImageView!
@@ -37,12 +38,37 @@ class RegisterView:UIView{
         contView.frame = bounds
         self.addSubview(contView)
         goLogin.addTarget(self, action: #selector(gotoLogin), for: .touchUpInside)
-       headImage.backgroundColor = UIColor.white
+       headImage.image = UIImage(named: "Unknown")
         headImage.isUserInteractionEnabled = true
         let tapGes = UITapGestureRecognizer()
         tapGes.addTarget(self, action: #selector(tapHead))
         headImage.addGestureRecognizer(tapGes)
+        registerBtn.addTarget(self, action: #selector(regist), for: .touchUpInside)
         
+        userName.delegate = self
+        passWord.delegate = self
+        
+    }
+    
+    @objc func regist(){
+        let hud = MBProgressHUD.showAdded(to: self, animated: true)
+        if userName.text == "" || passWord.text == "" {
+            hud.label.text = "用户名或密码不能为空"
+            hud.hide(animated: true, afterDelay: 0.5)
+        }else{
+            loginCenter.shared.register(userID: userName.text!, userPass: passWord.text!, handler: { (status) in
+            //let hud = MBProgressHUD.showAdded(to: self, animated: true)
+            if status == 1{
+                loginCenter.shared.postTheUserPicture(userID: self.userName.text!, userPass: self.passWord.text!, userPicture: self.headImage.image!)
+                hud.label.text = "注册成功"
+                hud.hide(animated: true, afterDelay: 0.5)
+                self.gotoLogin()
+            }else{
+                hud.label.text = "注册失败"
+                hud.hide(animated: true, afterDelay: 0.5)
+            }
+        })
+        }
     }
     
     @objc func gotoLogin(){
@@ -51,5 +77,9 @@ class RegisterView:UIView{
     @objc func tapHead(){
         pick!()
         print("pick")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
     }
 }
