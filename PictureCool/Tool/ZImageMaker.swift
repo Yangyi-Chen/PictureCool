@@ -49,7 +49,7 @@ class ZImageMaker {
     }
     static func makeUserImage()->UIImage{
         var add = UIImage(named: "Unknown")?.reSizeImage(reSize: CGSize(width: 40, height: 40))
-        add = add?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+       // add = add?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         return add!
     }
     

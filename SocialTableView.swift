@@ -10,10 +10,15 @@ import UIKit
 import ESPullToRefresh
 import MJRefresh
 
-class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITableViewDelegate{
+class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate{
     var ePicture:[UIImage] = []
+    var eUsers:[String] = []
+    
     typealias pushValue = (UIImage)->()
+    var tapHead:UITapGestureRecognizer?
     var push:pushValue?
+    typealias pushCValue = (String)->()
+    var pushCenter:pushCValue?
     var nowArr:[String] = []
     var nowIndex = 0
     
@@ -28,6 +33,13 @@ class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITable
         let cell = SocialTableViewCell(style: .default, reuseIdentifier: "SocialTableViewCell")
         cell.pictureView.frame.size.height = ePicture[indexPath.row].size.height * cell.pictureView.frame.width / ePicture[indexPath.row].size.width
         cell.pictureView.image = ePicture[indexPath.row]
+        cell.push = {
+//            self.pushCenter!(self.eUsers[indexPath.row])
+            self.pushCenter!("I AM OTHERS")
+        }
+//        tapHead = UITapGestureRecognizer()
+//        tapHead?.addTarget(self, action: #selector(tapH))
+//        cell.headView.addGestureRecognizer(tapHead!)
         return cell
     }
     
@@ -42,7 +54,7 @@ class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //push!(ePicture![indexPath.row])
+        push!(ePicture[indexPath.row])
         
     }
     
@@ -56,6 +68,10 @@ class SocialTableView:UITableView,UITabBarDelegate,UITableViewDataSource,UITable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return ePicture[indexPath.row].size.height * (UIScreen.main.bounds.width/10*8) / ePicture[indexPath.row].size.width + 20
     }
+    
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        if touch.view?.isKind(of: <#T##AnyClass#>)
+//    }
     
     func refreshData(){
         

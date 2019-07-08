@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate {
     
@@ -19,6 +20,7 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
     
     typealias goValue = ()->()
     var gotoLoginC:goValue?
+    var gotoPerCenter:goValue?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allPicture!.count
@@ -39,6 +41,9 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
         nib.awakeFromNib()
         nib.go = {
             self.gotoLoginC!()
+        }
+        nib.goCenter = {
+            self.gotoPerCenter!()
         }
         return nib
     }
@@ -67,9 +72,21 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
             if PictureProcessCore.shared.status == 0{
             self.gotoLoginC!()
             }else{
-            saveCloud.shared.sharePicture(image: self.allPicture![indexPath.row],handler:{
-                self.refresh!()
-            })
+                VerifyCore.shared.varifyPicture(imageSpecial: self.allPicture![indexPath.row], handler: { (flag) in
+                    if flag == "正常"{
+                        saveCloud.shared.sharePicture(image: self.allPicture![indexPath.row],handler:{
+                            
+                            self.refresh!()
+                        })
+                    }else{
+                        print("图片非法")
+                        let hud = MBProgressHUD.showAdded(to: self, animated: true)
+                        hud.mode = .text
+                        hud.label.text = "图片非法"
+                        hud.hide(animated: true, afterDelay: 1)
+                    }
+                })
+            
             }
            
         }

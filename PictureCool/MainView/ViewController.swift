@@ -234,17 +234,32 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
             self.navigationController?.pushViewController(vc, animated: true)
         }
         tableView.refresh = {
-            self.socialTable.refreshData()
+            self.socialTable.zHeader.beginRefreshing()
             
-            self.socialTable.reloadData()
+            //self.socialTable.reloadData()
         }
         tableView.gotoLoginC = {
             self.gotoLoginViewController()
+        }
+        tableView.gotoPerCenter = {
+            let vc = PersonalCenterViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
         //self.view.addSubview(tableView)
         
         socialTable = SocialTableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: .grouped)
+        socialTable.push = {
+            (make) in
+            let vc = AppriciateViewController()
+            vc.nowImage = make
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        socialTable.pushCenter = { (make) in
+            let vc = PersonalCenterViewController()
+            vc.userID = make
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
     

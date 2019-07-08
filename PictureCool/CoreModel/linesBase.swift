@@ -55,7 +55,7 @@ class lineBase{
         
     }
     
-    func produceSentence(tag:String,handler:@escaping ([String])->()){
+    func produceSentence(tag:String,handler:@escaping ([String],String)->()){
         let wholeURL = "http://www.ichacha.net/mzj/"+tag+".html"
         let verifiedURL = wholeURL.urlEncoded()
         Alamofire.request(verifiedURL).responseData{(response) in
@@ -66,10 +66,10 @@ class lineBase{
                 arr.append(ti.text!)
             }
             //此时arr中 前五个元素是用tag造的句子
-            for i in 0...4{
-                print(arr[i])
-            }
-            handler(arr)
+//            for i in 0...4{
+//                print(arr[i])
+//            }
+            handler(arr,tag)
         }
     }
     

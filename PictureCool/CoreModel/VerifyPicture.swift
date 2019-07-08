@@ -13,9 +13,11 @@ class VerifyCore{
     
     var Token:String?
     
+    private static var instance = VerifyCore()
     
+    class var shared:VerifyCore {return instance}
     
-    func varifyPicture(imageSpecial:UIImage){
+    func varifyPicture(imageSpecial:UIImage,handler:@escaping (String)->()){
         getTheToken()
         while(Token == nil){
             
@@ -26,11 +28,7 @@ class VerifyCore{
                           encoding: JSONEncoding.default,
                           headers: constructHeader()).responseData{(response) in
                             let flag = ((((try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! NSDictionary)["result"] as! NSDictionary)["antiporn"] as! NSDictionary)["conclusion"]) as! String
-                            if(flag == "正常"){
-                                
-                            }else{
-                                
-                            }
+                            handler(flag)
                             
         }
         

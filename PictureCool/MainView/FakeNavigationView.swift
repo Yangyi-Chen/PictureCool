@@ -16,6 +16,7 @@ class FakeNavigationView: UIView {
     
     typealias goValue = () -> ()
     var go:goValue?
+    var goCenter:goValue?
     
     
     override init(frame: CGRect) {
@@ -36,7 +37,9 @@ class FakeNavigationView: UIView {
         userBtn.addTarget(self, action: #selector(tapToLogin), for: .touchUpInside)
         userBtn.layer.cornerRadius = 20
         userBtn.clipsToBounds = true
-        userBtn.tintColor = nil
+        userBtn.contentMode = .scaleAspectFill
+        userBtn.layer.masksToBounds = true
+        //userBtn.tintColor = nil
         var image = UIImage()
         if PictureProcessCore.shared.status == 1 {
 //            loginCenter.shared.gettheUserPicture(userID: PictureProcessCore.shared.userID!,handler:{(im) in
@@ -50,7 +53,11 @@ class FakeNavigationView: UIView {
     }
     
     @objc func tapToLogin(){
+        if PictureProcessCore.shared.status == 1{
+            goCenter!()
+        }else{
         go!()
+        }
     }
     private func addTitle(){
 //        let title = UILabel(frame: CGRect(x: 0, y: 50, width: 100, height: 50))

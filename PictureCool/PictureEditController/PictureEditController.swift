@@ -172,10 +172,15 @@ class PictureEditController: UIViewController {
         tag = detectcore?.getTheMainElement()
         var tempText = PictureProcessCore.shared.getTheLines(tag: (tag)!, label: pLabel)
         if tempText == "none" {
-            lineBase.shared.produceSentence(tag: tag!, handler: { (make) in
+            lineBase.shared.produceSentence(tag: tag!, handler: { (make,tag) in
+                if make != [] {
                 self.sentences = make
                 tempText = make[Int(arc4random() % 4)]
                 self.pLabel.text = tempText
+                }else{
+                     self.pLabel.text = tag
+                    
+                }
             })
         }
         

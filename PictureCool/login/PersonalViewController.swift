@@ -10,7 +10,7 @@ import UIKit
 
 class PersonalViewController: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
     lazy var register = { () -> RegisterView in
-        let temp = RegisterView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        let temp = RegisterView(frame: CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height))
         temp.awakeFromNib()
         return temp
         
@@ -31,8 +31,8 @@ class PersonalViewController: UIViewController,UINavigationControllerDelegate,UI
         self.view.addSubview(register)
         self.view.addSubview(login)
         register.go = {
-            self.register.frame.origin.x += self.view.frame.width
-            login.frame.origin.x += self.view.frame.width
+            self.register.frame.origin.y += self.view.frame.height
+            login.frame.origin.y += self.view.frame.height
         }
         
         register.pick = {
@@ -45,8 +45,8 @@ class PersonalViewController: UIViewController,UINavigationControllerDelegate,UI
         }
 
         login.go = {
-            self.register.frame.origin.x -= self.view.frame.width
-            login.frame.origin.x -= self.view.frame.width
+            self.register.frame.origin.y -= self.view.frame.height
+            login.frame.origin.y -= self.view.frame.height
         }
     }
     

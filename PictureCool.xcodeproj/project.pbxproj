@@ -31,7 +31,11 @@
 		30EDE1D022D041E400620F6D /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30EDE1CC22D041E300620F6D /* RegisterView.xib */; };
 		30EDE1D122D041E400620F6D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EDE1CD22D041E300620F6D /* LoginView.swift */; };
 		30F7B50922D0571D00BDC6AF /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F7B50822D0571D00BDC6AF /* LoginView.xib */; };
-		30F7B50C22D31F7500BDC6AF /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F7B50B22D31F7500BDC6AF /* PersonalViewController.swift */; };
+		30F7B50C22D31F7500BDC6AF /* PersonalCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F7B50B22D31F7500BDC6AF /* PersonalCenterViewController.swift */; };
+		30F7B50E22D3221D00BDC6AF /* PersonalCenterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F7B50D22D3221D00BDC6AF /* PersonalCenterTableView.swift */; };
+		30F7B51022D3224800BDC6AF /* PersonalCenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F7B50F22D3224800BDC6AF /* PersonalCenterTableViewCell.swift */; };
+		30F7B51222D3238900BDC6AF /* PersonalNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F7B51122D3238900BDC6AF /* PersonalNavView.swift */; };
+		30F7B51422D323EB00BDC6AF /* PersonalNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F7B51322D323EB00BDC6AF /* PersonalNavView.xib */; };
 		367A9424C351D39E305B7DFA /* Pods_PictureCool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */; };
 		B534D30722CC31F1000FEFB3 /* PitureBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D30622CC31F1000FEFB3 /* PitureBase.swift */; };
 		B534D34B22CDF532000FEFB3 /* SaveCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D34A22CDF532000FEFB3 /* SaveCloud.swift */; };
@@ -73,7 +77,11 @@
 		30EDE1CC22D041E300620F6D /* RegisterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
 		30EDE1CD22D041E300620F6D /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		30F7B50822D0571D00BDC6AF /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
-		30F7B50B22D31F7500BDC6AF /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		30F7B50B22D31F7500BDC6AF /* PersonalCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCenterViewController.swift; sourceTree = "<group>"; };
+		30F7B50D22D3221D00BDC6AF /* PersonalCenterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCenterTableView.swift; sourceTree = "<group>"; };
+		30F7B50F22D3224800BDC6AF /* PersonalCenterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCenterTableViewCell.swift; sourceTree = "<group>"; };
+		30F7B51122D3238900BDC6AF /* PersonalNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalNavView.swift; sourceTree = "<group>"; };
+		30F7B51322D323EB00BDC6AF /* PersonalNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalNavView.xib; sourceTree = "<group>"; };
 		60E82D0274828238DAC987BA /* Pods-PictureCool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureCool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureCool/Pods-PictureCool.debug.xcconfig"; sourceTree = "<group>"; };
 		6422F06C5D1D0E1E7396D4D4 /* Pods-PictureCool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureCool.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureCool/Pods-PictureCool.release.xcconfig"; sourceTree = "<group>"; };
 		AD5AFE1BAA12504A3E30B280 /* Pods_PictureCool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureCool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +172,11 @@
 		30F7B50A22D31F5600BDC6AF /* PersonalView */ = {
 			isa = PBXGroup;
 			children = (
-				30F7B50B22D31F7500BDC6AF /* PersonalViewController.swift */,
+				30F7B50B22D31F7500BDC6AF /* PersonalCenterViewController.swift */,
+				30F7B50D22D3221D00BDC6AF /* PersonalCenterTableView.swift */,
+				30F7B50F22D3224800BDC6AF /* PersonalCenterTableViewCell.swift */,
+				30F7B51122D3238900BDC6AF /* PersonalNavView.swift */,
+				30F7B51322D323EB00BDC6AF /* PersonalNavView.xib */,
 			);
 			path = PersonalView;
 			sourceTree = "<group>";
@@ -314,6 +326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F7B51422D323EB00BDC6AF /* PersonalNavView.xib in Resources */,
 				30A9F6D122CD9601007F5692 /* FakeSocialNavView.xib in Resources */,
 				30EDE1D022D041E400620F6D /* RegisterView.xib in Resources */,
 				30F7B50922D0571D00BDC6AF /* LoginView.xib in Resources */,
@@ -393,6 +406,7 @@
 				30A9F6C922CC3F3D007F5692 /* DrawTool.swift in Sources */,
 				30A9F6B022C9E579007F5692 /* AppDelegate.swift in Sources */,
 				B534D3CC22D04B41000FEFB3 /* VerifyPicture.swift in Sources */,
+				30F7B51222D3238900BDC6AF /* PersonalNavView.swift in Sources */,
 				30A9F6B622C9EFBF007F5692 /* FakeNavigationView.swift in Sources */,
 				30A9F6A622C98E72007F5692 /* AnimationTool.swift in Sources */,
 				30A9F6A422C8ABA5007F5692 /* ZImageMaker.swift in Sources */,
@@ -411,9 +425,11 @@
 				B55A776C22C89E1800D4C635 /* GetInformation.swift in Sources */,
 				B55A84BE22CB4D4500D4C635 /* DetectPicture.swift in Sources */,
 				B534D30722CC31F1000FEFB3 /* PitureBase.swift in Sources */,
+				30F7B51022D3224800BDC6AF /* PersonalCenterTableViewCell.swift in Sources */,
+				30F7B50E22D3221D00BDC6AF /* PersonalCenterTableView.swift in Sources */,
 				30A9F6C522CB53BA007F5692 /* MainTableViewCell.swift in Sources */,
 				B534D34B22CDF532000FEFB3 /* SaveCloud.swift in Sources */,
-				30F7B50C22D31F7500BDC6AF /* PersonalViewController.swift in Sources */,
+				30F7B50C22D31F7500BDC6AF /* PersonalCenterViewController.swift in Sources */,
 				30A9F6B422C9EFB6007F5692 /* AnimationView.swift in Sources */,
 				B55A776E22C9907600D4C635 /* linesBase.swift in Sources */,
 				30A9F6C322CB526D007F5692 /* AppriciateViewController.swift in Sources */,
