@@ -42,6 +42,9 @@ class loginCenter{
     }
     
     
+    
+    
+    
     //获取用户图像
     func gettheUserPicture(userID:String){
         Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/get_avatar_url.php", method: .post, parameters: constructgetPictureParameters(userID: userID), encoding: URLEncoding.default, headers: constructHead()).responseData{(response) in
@@ -97,7 +100,9 @@ extension loginCenter{
         par = [
             "name":userID,
             "pass":userPass,
+            "type":"jpg",
             "data":base64
+            
         ]
         return par
     }
@@ -105,7 +110,7 @@ extension loginCenter{
     private func constructgetPictureParameters(userID:String)->Parameters{
         var par = Parameters()
         par = [
-            "name":userID
+            "用户名":userID
         ]
         return par
     }
