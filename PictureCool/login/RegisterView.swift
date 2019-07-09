@@ -47,6 +47,7 @@ class RegisterView:UIView,UITextFieldDelegate{
         
         userName.delegate = self
         passWord.delegate = self
+        passWord.isSecureTextEntry = true
         
     }
     

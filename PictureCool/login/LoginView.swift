@@ -68,7 +68,7 @@ class LoginView: UIView,UITextFieldDelegate {
         goRegister.addTarget(self, action: #selector(gotoRegister), for: .touchUpInside)
         userName.delegate = self
         passWord.delegate = self
-        
+        passWord.isSecureTextEntry = true
         loginbtn.addTarget(self, action: #selector(login), for: .touchUpInside)
     }
     
