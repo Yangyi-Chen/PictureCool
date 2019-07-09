@@ -59,10 +59,12 @@ class RegisterView:UIView,UITextFieldDelegate{
             loginCenter.shared.register(userID: userName.text!, userPass: passWord.text!, handler: { (status) in
             //let hud = MBProgressHUD.showAdded(to: self, animated: true)
             if status == 1{
-                loginCenter.shared.postTheUserPicture(userID: self.userName.text!, userPass: self.passWord.text!, userPicture: self.headImage.image!)
-                hud.label.text = "注册成功"
-                hud.hide(animated: true, afterDelay: 0.5)
-                self.gotoLogin()
+                loginCenter.shared.postTheUserPicture(userID: self.userName.text!, userPass: self.passWord.text!, userPicture: self.headImage.image!, handler: {
+                    hud.label.text = "注册成功"
+                    hud.hide(animated: true, afterDelay: 0.5)
+                    self.gotoLogin()
+                })
+                
             }else{
                 hud.label.text = "注册失败"
                 hud.hide(animated: true, afterDelay: 0.5)

@@ -17,6 +17,8 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
     
     typealias refreshValue = ()->()
     var refresh:refreshValue?
+    var makeSuccHud:refreshValue?
+    var makeFailHud:refreshValue?
     
     typealias goValue = ()->()
     var gotoLoginC:goValue?
@@ -50,7 +52,7 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         push!(allPicture![indexPath.row])
-        
+        self.deselectRow(at: indexPath, animated: false)
     }
     
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -74,16 +76,13 @@ class MainTableView: UITableView,UITableViewDelegate,UITableViewDataSource,UIGes
             }else{
                 VerifyCore.shared.varifyPicture(imageSpecial: self.allPicture![indexPath.row], handler: { (flag) in
                     if flag == "正常"{
-                        saveCloud.shared.sharePicture(image: self.allPicture![indexPath.row],handler:{
-                            
+                        saveCloud.shared.sharePicture(image: self.allPicture![indexPath.row], userID: PictureProcessCore.shared.userID!, userPass: PictureProcessCore.shared.userPass!,handler:{
+                            self.makeSuccHud!()
                             self.refresh!()
                         })
                     }else{
                         print("图片非法")
-                        let hud = MBProgressHUD.showAdded(to: self, animated: true)
-                        hud.mode = .text
-                        hud.label.text = "图片非法"
-                        hud.hide(animated: true, afterDelay: 1)
+                        self.makeFailHud!()
                     }
                 })
             

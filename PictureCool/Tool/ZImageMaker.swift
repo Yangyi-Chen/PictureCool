@@ -33,7 +33,7 @@ class ZImageMaker {
         return add!
     }
     static func makeRefreshImage()->UIImage{
-        var add = UIImage(named: "refresh")?.reSizeImage(reSize: CGSize(width: 60, height: 60))
+        var add = UIImage(named: "refresh2")?.reSizeImage(reSize: CGSize(width: 60, height: 60))
         add = add?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         return add!
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import MBProgressHUD
 
 class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate {
 
@@ -243,7 +244,21 @@ class ViewController: UIViewController,CAAnimationDelegate,UIImagePickerControll
         }
         tableView.gotoPerCenter = {
             let vc = PersonalCenterViewController()
+            vc.userID = PictureProcessCore.shared.userID!
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+        tableView.makeSuccHud = {
+            let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+            hud.mode = .text
+            hud.label.text = "push成功！"
+            hud.hide(animated: true, afterDelay: 1)
+        }
+        
+        tableView.makeFailHud = {
+            let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+            hud.mode = .text
+            hud.label.text = "图片非法"
+            hud.hide(animated: true, afterDelay: 1)
         }
         
         //self.view.addSubview(tableView)

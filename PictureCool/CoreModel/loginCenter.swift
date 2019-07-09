@@ -35,8 +35,10 @@ class loginCenter{
     
     
     //注册的时候，更改头像时候，都调用这个函数
-    func postTheUserPicture(userID:String,userPass:String,userPicture:UIImage){
-        Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/change_avatar.php", method: .post, parameters: constructPictureParameters(userID: userID, userPass: userPass, userPicture: userPicture), encoding: URLEncoding.default, headers: constructHead())
+    func postTheUserPicture(userID:String,userPass:String,userPicture:UIImage,handler:@escaping ()->()){
+        Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/change_avatar.php", method: .post, parameters: constructPictureParameters(userID: userID, userPass: userPass, userPicture: userPicture), encoding: URLEncoding.default, headers: constructHead()).responseData { (response) in
+            handler()
+        }
     }
     
     
@@ -46,13 +48,59 @@ class loginCenter{
     //获取用户图像
     func gettheUserPicture(userID:String,handler:@escaping (UIImage)->()){
         Alamofire.request("https://blog.cyyself.name/pic-upload-for-chenyangyi/get_avatar_url.php", method: .post, parameters: constructgetPictureParameters(userID: userID), encoding: URLEncoding.default, headers: constructHead()).responseData{(response) in
-            let image = UIImage(data: response.data!)
-            //TODO: dosomething with image
+            let jsonDic = try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! NSDictionary
+            let Strurl = jsonDic["url"] as! String
+            let url = URL(string: Strurl)
+            //url是图像URL
+            //用法：
             
-            handler(image!)
+            Alamofire.request(url!).responseData{(response) in
+                let image = UIImage(data: response.data!)
+                handler(image!)
+            }
+ 
+ 
+ 
+            
+            
+            
             
         }
+        
+    }
     
+    func getHeadFromUrl(arr:[String],handler:@escaping ([UIImage])->()){
+        let queue = DispatchQueue(label: "requestHandler")
+        let group = DispatchGroup()
+        //weak var weakSelf =  self
+        let sema = DispatchSemaphore(value: 0)
+        var imageArr:[UIImage] = []
+        
+        for str in arr{
+            queue.async(group: group) {
+                let wholeStr = str
+                Alamofire.request(URL(string: wholeStr)!).responseData{(response) in
+                    let image = UIImage(data: response.data!)
+                    //TODO:  sss
+                    if image != nil{
+                    imageArr.append(image!)
+                    }
+                    
+                    sema.signal()
+                    //count += 1
+                    
+                }
+                
+                
+                sema.wait()
+            }
+        }
+        group.notify(queue: DispatchQueue.main, execute: {
+            //tableView同时用到了两个请求到返回结果
+            
+            //hud.hide(animated: true)
+            handler(imageArr)
+        })
     }
     
     //通过用户的账号，获取用户密码，实现在本地不需要每次打开都登录
@@ -108,7 +156,7 @@ extension loginCenter{
     private func constructgetPictureParameters(userID:String)->Parameters{
         var par = Parameters()
         par = [
-            "用户名":userID
+            "name":userID
         ]
         return par
     }

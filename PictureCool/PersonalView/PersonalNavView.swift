@@ -14,6 +14,10 @@ class PersonalNavView: UIView {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pCenter: UILabel!
+    
+    
+    typealias changeValue=()->()
+    var change:changeValue?
     override init(frame: CGRect) {
         super.init(frame: frame)
         initFromXib()
@@ -32,9 +36,20 @@ class PersonalNavView: UIView {
         self.addSubview(contView)
         imageView.layer.cornerRadius = 20
         imageView.clipsToBounds = true
-        
+        let tapGas = UITapGestureRecognizer()
+        tapGas.addTarget(self, action: #selector(tapHead))
+        imageView.addGestureRecognizer(tapGas)
+        imageView.isUserInteractionEnabled = true
         //        cLabel.snp.makeConstraints { (make) in
         //            make.right.equalTo(self.vi)
         //        }
+    }
+    @objc func tapHead(){
+        if PictureProcessCore.shared.userID == self.userID.text!{
+        change!()
+            print("1")
+        }else{
+            print("0")
+        }
     }
 }

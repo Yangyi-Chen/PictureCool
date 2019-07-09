@@ -36,17 +36,18 @@ class FakeNavigationView: UIView {
         self.addSubview(contView)
         userBtn.addTarget(self, action: #selector(tapToLogin), for: .touchUpInside)
         userBtn.layer.cornerRadius = 20
-        userBtn.clipsToBounds = true
         userBtn.contentMode = .scaleAspectFill
-        userBtn.layer.masksToBounds = true
+        userBtn.clipsToBounds = true
+        
+        
         //userBtn.tintColor = nil
         var image = UIImage()
         if PictureProcessCore.shared.status == 1 {
-//            loginCenter.shared.gettheUserPicture(userID: PictureProcessCore.shared.userID!,handler:{(im) in
-//                image = im
-//                self.userBtn.setImage(image, for: .normal)
-//            })
-           userBtn.setImage(ZImageMaker.makeUserImage(), for: .normal)
+            loginCenter.shared.gettheUserPicture(userID: PictureProcessCore.shared.userID!,handler:{(im) in
+                image = im
+                self.userBtn.setImage(image, for: .normal)
+            })
+           //userBtn.setImage(ZImageMaker.makeUserImage(), for: .normal)
         }else{
         userBtn.setImage(ZImageMaker.makeUserImage(), for: .normal)
         }

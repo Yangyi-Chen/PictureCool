@@ -10,7 +10,14 @@ import UIKit
 
 class PersonalCenterTableView: UITableView,UITableViewDelegate,UITableViewDataSource {
     var ePicture:[UIImage] = []
+    var nowUrlArr:[String] = []
     var userID:String = "lighayes"
+    var headImg:UIImage?
+    var headUrl:String?
+    typealias pickValue = ()->()
+    var pick:pickValue?
+    typealias pushValue = (UIImage)->()
+    var push:pushValue?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ePicture.count
         
@@ -25,6 +32,11 @@ class PersonalCenterTableView: UITableView,UITableViewDelegate,UITableViewDataSo
         cell.pictureView.frame.size.height = ePicture[indexPath.row].size.height * cell.pictureView.frame.width / ePicture[indexPath.row].size.width
         cell.pictureView.image = ePicture[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        push!(ePicture[indexPath.row])
+        self.deselectRow(at: indexPath, animated: false)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,8 +54,35 @@ class PersonalCenterTableView: UITableView,UITableViewDelegate,UITableViewDataSo
 //        loginCenter.shared.gettheUserPicture(userID: userID) { (make) in
 //            nib.imageView.image = make
 //        }
-        nib.imageView.image = ZImageMaker.makeUserImage()
+        nib.imageView.image = headImg
+        nib.change = {
+            
+            self.pick!()
+            
+        }
         return nib
+    }
+    
+    func refreshPicture(){
+        saveCloud.shared.getUniqueUserPicture(userID: userID) { (arr) in
+            self.nowUrlArr = []
+            for i in arr{
+                let temp = i as! NSDictionary
+                self.nowUrlArr.append(temp["url"] as! String)
+                
+            }
+            print("nowUrlARr is \(self.nowUrlArr.count)")
+            saveCloud.shared.getAllTruePicture(arr: self.nowUrlArr, handler: { (arr) in
+                loginCenter.shared.gettheUserPicture(userID: self.userID, handler: { (img) in
+                    self.headImg = img
+                    
+                    self.ePicture = arr
+                    print("epicture.count is \(self.ePicture.count)")
+                    self.reloadData()
+                })
+                
+            })
+        }
     }
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -51,7 +90,8 @@ class PersonalCenterTableView: UITableView,UITableViewDelegate,UITableViewDataSo
         self.register(PersonalCenterTableViewCell.self, forCellReuseIdentifier: "PersonalCenterTableViewCell")
         self.backgroundColor = UIColor.tintDark
         //self.refreshData()
-        ePicture = [UIImage(named: "temp")] as! [UIImage]
+        //ePicture = [UIImage(named: "temp")] as! [UIImage]
+        //refreshPicture()
         self.delegate = self
         self.dataSource = self
         self.separatorStyle = .none

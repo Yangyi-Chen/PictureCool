@@ -19,7 +19,7 @@ class PictureProcessCore{
     
     var status = 0
     var userID:String?
-    
+    var userPass:String?
     
     
 
@@ -80,6 +80,12 @@ class PictureProcessCore{
         userID = String(data: data, encoding: .utf8)
         }
         
+        let passURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("userPass")
+        if FileManager.default.fileExists(atPath: passURL.path){
+            let data3 = try! Data(contentsOf: passURL)
+            userPass = String(data: data3, encoding: .utf8)
+        }
+        
         let statusurl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask,appropriateFor:nil,create:false).appendingPathComponent("status")
         
         if FileManager.default.fileExists(atPath: statusurl.path){
@@ -89,6 +95,8 @@ class PictureProcessCore{
         let str = String(data: data2, encoding: .utf8)
         status = Int(str!)!
         }
+        
+        
         
         
     }
@@ -124,8 +132,14 @@ class PictureProcessCore{
         
         let userIDurl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("userID")
         if userID != nil{
-            let userIDData = userID?.data(using: .utf8)
+            let userIDData = userID!.data(using: .utf8)
             try! userIDData!.write(to: userIDurl)
+        }
+        
+        let passUrl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask,appropriateFor: nil,create: true).appendingPathComponent("userPass")
+        if userPass != nil{
+            let passData = userPass!.data(using: .utf8)
+        try! passData?.write(to: passUrl)
         }
         
     }

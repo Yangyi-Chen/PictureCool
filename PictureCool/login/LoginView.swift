@@ -84,6 +84,7 @@ class LoginView: UIView,UITextFieldDelegate {
                     hud.hide(animated: true, afterDelay: 0.5)
                     PictureProcessCore.shared.status = 1
                     PictureProcessCore.shared.userID = self.userName.text!
+                    PictureProcessCore.shared.userPass = self.passWord.text!
                     PictureProcessCore.shared.saveModel()
                     self.pop!()
                 }else{
